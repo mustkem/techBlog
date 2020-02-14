@@ -1,74 +1,72 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Author from './Author'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { path } from 'ramda';
+
+import SideBanner from '../Layout/SideBanner/SideBanner';
+import { lineHeight } from '@material-ui/system';
+
+import AdvertBannerTop from '../sharedComponents/Advert/AdvertBannerTop'
 
 
-class Home extends React.Component{
-    constructor(props){
+class Home extends React.Component {
+    constructor(props) {
         super(props);
-        this.state={
-            posts:[]
+        this.state = {
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         this.props.getPosts();
-        setTimeout(() => {
-            this.setState({
-                posts:window.posts
-            })
-        }, 2000);
-        setTimeout(() => {
-            this.setState({
-                posts:window.posts
-            })
-        }, 5000);
-        setTimeout(() => {
-            this.setState({
-                posts:window.posts
-            })
-        }, 10000);
     }
-    render(){
-        console.log(window.posts)
-    return (
-        <div className="home">
-           <Container>
-            <Grid container spacing={3}>
-                <Grid item xs={8}>
-                <h2>Articles</h2>
-                    <div className="posts">
-                    {
-                        this.state.posts.map((item, index) => {
-                            return (
-                                <div className="post" key={index}>
-                                    <strong>{item.title}</strong>
-                                    <div dangerouslySetInnerHTML={{__html: item.content}}>
-                                       
-                                    </div>
-                                    <a href="">
-                                        Open Post
-                                    </a>
-                                </div>
-                            )
-                        })
-                    }
-                    </div>
-                </Grid>
-                {/* <Grid item xs={4}>
-                    <div className="advertisement">
-                        <span>gop</span>
-                    </div>
-                    <div className="advertisement">
-                        <span>npv</span>
-                    </div>
-                    <div className="advertisement">
-                        <span>lpo</span>
-                    </div>
-                </Grid> */}
-            </Grid>
-            </Container>
-        </div>
-    )
+    render() {
+        return (
+            <div className="home">
+                <Container>
+                    <AdvertBannerTop />
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} sm={8} >
+
+                            <ul className="posts post-list">
+                                {
+                                    this.props.posts && this.props.posts.map((item, index) => {
+                                        return (
+                                            <li className="post-wrap" key={index}>
+                                                <Link className="link title" to={'/' + item.slug}>
+                                                    <div className="post-image">
+                                                        <img src="images/JavaScriptListImage.png" />
+                                                    </div>
+                                                    <div className="post-preview" >
+                                                        <h2>{item.title}</h2>
+                                                        <div className="desc">
+                                                            {
+                                                                item.desc
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            </li>
+                                        )
+                                    })
+                                }
+
+                            </ul>
+                        </Grid>
+                        <Grid className="side-banner" item xs={0} sm={4}>
+                            <SideBanner />
+                        </Grid>
+                    </Grid>
+                </Container>
+            </div>
+        )
+    }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        posts: path(["page", "posts"], state)
+    }
 }
-export default Home;
+export default connect(mapStateToProps)(Home);

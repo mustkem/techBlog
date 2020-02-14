@@ -1,116 +1,331 @@
-a{
-    text-decoration: none;
+@media only screen and (max-width: 767px) {
+  /* STYLES HERE for BROWSER WINDOWS with a max-width of 480px. 
+     This will work on desktops when the window is narrowed.  */
+  .banner-adv .post-image {
+    width: 100%;
+    height: auto;
   }
-  
-  /* starts */
-  
-  .header.top {
-    background: #374a74;
-    margin-bottom: 80px;
+  .side-banner {
+    display: none;
   }
-  
-  .footer {
-    background: #1a1919ef;
-  }
-  
-  .navbar {
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-  }
-  
-  .navbar li {
+  .header .navbar li {
     list-style: none;
-    padding: 20px;
+    padding: 12px;
   }
-  
-  .navbar a {
-    text-decoration: none;
-    color: #fff;
+  .navbar li a{
+    font-size: 12px;
   }
+}
 
-  .advertisement {
-    margin-bottom: 50px;
-    height: 200px;
-    text-align: center;
-    vertical-align: middle;
-    position: relative;
-    background: rgb(214, 214, 214);
+a {
+  text-decoration: none;
+}
+
+#root {
+  background-color: #f7f8fc;
+}
+
+/* .MuiContainer-maxWidthLg {
+    background: #fff;
+  } */
+
+/* starts */
+
+.header.top {
+  background: #374a74;
+}
+
+.header.top .MuiContainer-root {
+  background: #374a74;
+}
+
+.header-container{
+  display: flex;
+}
+
+.footer {
+  background: #1a1919ef;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+.navbar li {
+  list-style: none;
+  padding: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.advertisement {
+  margin-bottom: 50px;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
 }
 
 .advertisement span {
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
-    color: rgb(90, 90, 90);
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  color: rgb(90, 90, 90);
 }
 
-
 .RichEditor-root {
-    background: #fff;
-    border: 1px solid #ddd;
-    font-family: 'Georgia', serif;
-    font-size: 14px;
-    padding: 15px;
-  }
-  
-  .RichEditor-editor {
-    border-top: 1px solid #ddd;
-    cursor: text;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
-  .RichEditor-editor .public-DraftEditorPlaceholder-root,
-  .RichEditor-editor .public-DraftEditor-content {
-    margin: 0 -15px -15px;
-    padding: 15px;
-  }
-  
-  .RichEditor-editor .public-DraftEditor-content {
-    min-height: 100px;
-  }
-  
-  .RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
-    display: none;
-  }
-  
-  .RichEditor-editor .RichEditor-blockquote {
-    border-left: 5px solid #eee;
-    color: #666;
-    font-family: 'Hoefler Text', 'Georgia', serif;
-    font-style: italic;
-    margin: 16px 0;
-    padding: 10px 20px;
-  }
-  
-  .RichEditor-editor .public-DraftStyleDefault-pre {
-    background-color: rgba(0, 0, 0, 0.05);
-    font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-    font-size: 16px;
-    padding: 20px;
-  }
-  
-  .RichEditor-controls {
-    font-family: 'Helvetica', sans-serif;
-    font-size: 14px;
-    margin-bottom: 5px;
-    user-select: none;
-  }
-  
-  .RichEditor-styleButton {
-    color: #999;
-    cursor: pointer;
-    margin-right: 16px;
-    padding: 2px 0;
-    display: inline-block;
-  }
-  
-  .RichEditor-activeButton {
-    color: #5890ff;
-  }
+  background: #fff;
+  border: 1px solid #ddd;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  padding: 15px;
+}
 
-  .posts .post{
-    margin:30px 0;
-  }
+.RichEditor-editor {
+  border-top: 1px solid #ddd;
+  cursor: text;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.RichEditor-editor .public-DraftEditorPlaceholder-root, .RichEditor-editor .public-DraftEditor-content {
+  margin: 0 -15px -15px;
+  padding: 15px;
+}
+
+.RichEditor-editor .public-DraftEditor-content {
+  min-height: 100px;
+}
+
+.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
+  display: none;
+}
+
+.RichEditor-editor .RichEditor-blockquote {
+  border-left: 5px solid #eee;
+  color: #666;
+  font-family: 'Hoefler Text', 'Georgia', serif;
+  font-style: italic;
+  margin: 16px 0;
+  padding: 10px 20px;
+}
+
+.RichEditor-editor .public-DraftStyleDefault-pre {
+  background-color: rgba(0, 0, 0, 0.05);
+  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.RichEditor-controls {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 14px;
+  margin-bottom: 5px;
+  user-select: none;
+}
+
+.RichEditor-styleButton {
+  color: #999;
+  cursor: pointer;
+  margin-right: 16px;
+  padding: 2px 0;
+  display: inline-block;
+}
+
+.RichEditor-activeButton {
+  color: #5890ff;
+}
+
+.posts .post {
+  margin: 30px 0;
+}
+
+.post.RichEditor-editor {
+  border-top: none;
+  padding-bottom: 10px;
+}
+
+.post-wrap {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+.post-wrap a{
+  display: flex;
+
+}
+
+.post-wrap a .post-image{
+  margin-top: 30px;;
+  width:20%;
+}
+.post-wrap a .post-image img{
+  width:100%;
+  height:auto;
+}
+.post-wrap a .post-preview{
+  width:80%;
+}
+
+.post .title {
+  color: #0f1e26;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  margin-bottom: 10px;
+}
+
+#authorBox {
+  background: #f0f0f0;
+  padding: 10px;
+  overflow: hidden;
+  color: #333;
+  width: 216px;
+}
+
+.post-content {
+  color: #555;
+  font-size: 18px;
+  margin: 36px 0;
+}
+
+#authorBox h3 {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+  padding: 10px 10px 5px 10px;
+}
+
+#authorBox h3 a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+#authorBox img {
+  margin: 5px 10px 0 5px;
+  padding: 5px;
+  float: left;
+  border: 1px solid #ddd;
+  max-width: 50px;
+  height: auto;
+}
+
+#authorBox p {
+  color: #333;
+  margin: 0;
+  padding: 0px 10px 10px 10px;
+}
+
+#authorBox p a {
+  color: #333;
+}
+
+.author-wrap #authorBox {
+  float: right;
+}
+
+.logo{
+  height:63px;
+}
+
+.edittor-wrp{
+  margin-bottom: 20px;;
+}
+.author-id-form{
+  margin-bottom: 10px;
+}
+
+.author-id-form{
+  display: flex;
+  flex-direction:column;
+  align-items:flex-end;
+}
+
+.author-id-form .grp{
+  margin-bottom: 10px;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+/* start commented backslash hack \*/
+
+* html .clearfix {
+  height: 1%;
+}
+
+.clearfix {
+  display: block;
+}
+
+/* close commented backslash hack */
+
+.posts .post-wrap .link {
+  display: flex;
+  /* or inline-flex */
+  color: #4c1380;
+}
+
+.post-list .post-image {
+  width: 20%;
+  margin-top: 10px;
+  border-radius: 4px;
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.post-list .post-preview {
+  padding: 0 30px;
+}
+
+.post-list .desc {
+  padding: 0 5px;
+}
+
+.banner-adv {
+  padding: 35px 0;
+  text-align: center;
+}
+
+h4 {
+  margin: 12px 0;
+}
+
+.test-svg {
+  position: absolute;
+  bottom: -35px;
+  left: 55px;
+  width: 505px;
+  height: 12px;
+}
+
+.victory-chart {
+  height: 300px;
+  width: 600px;
+  position: relative;
+}
+
+.chart-area {
+  margin-bottom: 100px;
+}
+
+.bttn-wrap{
+  display: flex;
+  justify-content:flex-end;
+}

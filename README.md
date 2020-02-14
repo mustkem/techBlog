@@ -1,3 +1,6 @@
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +69,17 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## firebase deploy
+1. Install Firebase CLI
+npm install -g firebase-tools
+
+2. Initialize your project
+firebase login
+
+Initiate your project
+firebase init
+
+3
+Deploy to Firebase Hosting
+firebase deploy
