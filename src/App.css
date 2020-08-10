@@ -12,7 +12,7 @@
     list-style: none;
     padding: 12px;
   }
-  .navbar li a{
+  .navbar li a {
     font-size: 12px;
   }
 }
@@ -39,7 +39,7 @@ a {
   background: #374a74;
 }
 
-.header-container{
+.header-container {
   display: flex;
 }
 
@@ -81,7 +81,7 @@ a {
 .RichEditor-root {
   background: #fff;
   border: 1px solid #ddd;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 14px;
   padding: 15px;
 }
@@ -93,7 +93,8 @@ a {
   margin-top: 10px;
 }
 
-.RichEditor-editor .public-DraftEditorPlaceholder-root, .RichEditor-editor .public-DraftEditor-content {
+.RichEditor-editor .public-DraftEditorPlaceholder-root,
+.RichEditor-editor .public-DraftEditor-content {
   margin: 0 -15px -15px;
   padding: 15px;
 }
@@ -109,7 +110,7 @@ a {
 .RichEditor-editor .RichEditor-blockquote {
   border-left: 5px solid #eee;
   color: #666;
-  font-family: 'Hoefler Text', 'Georgia', serif;
+  font-family: "Hoefler Text", "Georgia", serif;
   font-style: italic;
   margin: 16px 0;
   padding: 10px 20px;
@@ -117,13 +118,13 @@ a {
 
 .RichEditor-editor .public-DraftStyleDefault-pre {
   background-color: rgba(0, 0, 0, 0.05);
-  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+  font-family: "Inconsolata", "Menlo", "Consolas", monospace;
   font-size: 16px;
   padding: 20px;
 }
 
 .RichEditor-controls {
-  font-family: 'Helvetica', sans-serif;
+  font-family: "Helvetica", sans-serif;
   font-size: 14px;
   margin-bottom: 5px;
   user-select: none;
@@ -154,21 +155,20 @@ a {
   border-bottom: 1px solid #ddd;
   padding-bottom: 20px;
 }
-.post-wrap a{
+.post-wrap a {
   display: flex;
-
 }
 
-.post-wrap a .post-image{
-  margin-top: 30px;;
-  width:20%;
+.post-wrap a .post-image {
+  margin-top: 30px;
+  width: 20%;
 }
-.post-wrap a .post-image img{
-  width:100%;
-  height:auto;
+.post-wrap a .post-image img {
+  width: 100%;
+  height: auto;
 }
-.post-wrap a .post-preview{
-  width:80%;
+.post-wrap a .post-preview {
+  width: 80%;
 }
 
 .post .title {
@@ -181,7 +181,7 @@ a {
 
 #authorBox {
   background: #f0f0f0;
-  padding: 10px;
+  padding: 20px;
   overflow: hidden;
   color: #333;
   width: 216px;
@@ -198,6 +198,11 @@ a {
   color: #333;
   margin: 0;
   padding: 10px 10px 5px 10px;
+}
+
+#authorBox h4 {
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 #authorBox h3 a {
@@ -218,7 +223,6 @@ a {
 #authorBox p {
   color: #333;
   margin: 0;
-  padding: 0px 10px 10px 10px;
 }
 
 #authorBox p a {
@@ -229,24 +233,24 @@ a {
   float: right;
 }
 
-.logo{
-  height:63px;
+.logo {
+  height: 63px;
 }
 
-.edittor-wrp{
-  margin-bottom: 20px;;
+.edittor-wrp {
+  margin-bottom: 20px;
 }
-.author-id-form{
+.author-id-form {
   margin-bottom: 10px;
 }
 
-.author-id-form{
+.author-id-form {
   display: flex;
-  flex-direction:column;
-  align-items:flex-end;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-.author-id-form .grp{
+.author-id-form .grp {
   margin-bottom: 10px;
 }
 
@@ -325,7 +329,7 @@ h4 {
   margin-bottom: 100px;
 }
 
-.bttn-wrap{
+.bttn-wrap {
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
 }
