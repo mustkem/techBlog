@@ -1,3 +1,6 @@
+
+ $primary_color : #3f7af8;
+
 @media only screen and (max-width: 767px) {
   /* STYLES HERE for BROWSER WINDOWS with a max-width of 480px. 
      This will work on desktops when the window is narrowed.  */
@@ -8,17 +11,17 @@
   .side-banner {
     display: none;
   }
-  .header .navbar li {
+  .header .navbar-main li {
     list-style: none;
     padding: 12px;
   }
-  .navbar li a {
+  .navbar-main li a {
     font-size: 12px;
   }
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 #root {
@@ -29,39 +32,72 @@ a {
     background: #fff;
   } */
 
-/* starts */
-
-.header.top {
-  background: #374a74;
-}
-
-.header.top .MuiContainer-root {
-  background: #374a74;
-}
-
-.header-container {
-  display: flex;
-}
-
+  
+  
 .footer {
   background: #1a1919ef;
 }
 
-.navbar {
+/* starts */
+
+.header{
+  background-color: #fff;
+  box-shadow: 0px 0px 19px -7px #b5b5b5;
+
+
+.navbar-main {
   display: flex;
   flex-direction: row;
   margin: 0;
+  align-items: center;
 }
 
-.navbar li {
+.navbar-main li {
   list-style: none;
-  padding: 20px;
+  a{
+      display: block;
+      padding: 4px 19px;
+      color: $primary_color;
+      margin-left: 15px;
+      border-radius: 4px;
+      &.react{
+        background-color: #20232a;
+        color: #61dafb;
+        font-weight: 400;
+      }
+      &.javascript{
+        background-color: yellow;
+        color: black;
+        font-weight: 400;
+      }
+  }
+  
 }
 
-.navbar a {
+.navbar-main a {
   text-decoration: none;
-  color: #fff;
 }
+
+.header-content {
+  padding: 18px 0;
+
+  .logo-wrp{
+    a{
+      height: 100%;
+      display: block;
+      padding: 4px 19px;
+      color: $primary_color;
+      background-color: #fff;
+      border-radius: 4px;
+      font-weight: 400;
+
+    }
+  }
+}
+}
+
+
+
 
 .advertisement {
   margin-bottom: 50px;
@@ -234,7 +270,7 @@ a {
 }
 
 .logo {
-  height: 63px;
+  height: 35px;
 }
 
 .edittor-wrp {

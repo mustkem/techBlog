@@ -1,26 +1,31 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import PromiseBasedActionComponent from "../../Containers/promiseBasedActionContianer";
 
 export default (props) => {
   return (
     <div className="header top">
-      <Container className="header-container" maxWidth="lg">
+      <div className="container" >
+        <div className="header-content"  style={{display:"flex"}}>
         <div className="logo-wrp">
           <Link to="/">
-            <img className="logo" src="/images/logo.png" />
+          <img style={{minWidth:35}} className="logo" src="/images/logo.png" />
+            <span style={{position:"relative", top:1, marginLeft:8}}>
+            Code Medium
+            </span>
           </Link>
         </div>
-        <ul className="navbar">
+        <ul className="navbar-main">
           <li>
-            <a href="/">Javascript</a>
+            <a className="react" href="/">React</a>
           </li>
           <li>
-            <a href="/">ReactJs</a>
+            <a className="javascript" href="/">Javascript</a>
           </li>
+          
         </ul>
-      </Container>
+        </div>
+      </div>
       <PromiseBasedActionComponent />
     </div>
   );
