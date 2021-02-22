@@ -3,10 +3,13 @@ import Container from '@material-ui/core/Container';
 import MyEditor from './MyEditor';
 import EditorConvertToHTML from './EditorConvertToHTML'
 
+import Layout from '../Layout/Layout'
+
 class AddPost extends React.Component {
 
     render() {
         return (
+            <Layout >
             <div className="home">
                 <Container maxWidth="lg">
                     <MyEditor
@@ -20,6 +23,7 @@ class AddPost extends React.Component {
                     {/* <EditorConvertToHTML addPost={this.props.addPost} />> */}
                 </Container>
             </div>
+            </Layout>
         )
     }
 }

@@ -9,6 +9,8 @@ import { path } from 'ramda';
 import SideBanner from '../Layout/SideBanner/SideBanner';
 import { lineHeight } from '@material-ui/system';
 
+import Layout from '../Layout/Layout'
+
 import AdvertBannerTop from '../sharedComponents/Advert/AdvertBannerTop'
 
 
@@ -23,6 +25,7 @@ class Home extends React.Component {
     }
     render() {
         return (
+            <Layout >
             <div className="home">
                 <Container>
                     <AdvertBannerTop />
@@ -60,6 +63,7 @@ class Home extends React.Component {
                     </Grid>
                 </Container>
             </div>
+            </Layout>
         )
     }
 }

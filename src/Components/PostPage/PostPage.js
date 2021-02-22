@@ -9,6 +9,8 @@ import Author from '../Home/Author';
 import MyEditor from '../AddPost/MyEditor';
 import AdvertBannerTop from '../sharedComponents/Advert/AdvertBannerTop';
 
+import Layout from '../Layout/Layout'
+
 class PostPage extends React.Component {
     constructor(props) {
         super(props);
@@ -42,6 +44,7 @@ class PostPage extends React.Component {
             return null;
         }
         return (
+            <Layout >
             <div className="post-page">
                 <Container>
                     <AdvertBannerTop />
@@ -95,7 +98,8 @@ class PostPage extends React.Component {
                         </Grid>
                     </Grid>
                 </Container>
-            </div>
+            </div>\
+            </Layout >
         )
     }
 }

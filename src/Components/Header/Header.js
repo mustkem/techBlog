@@ -19,18 +19,6 @@ export default (props) => {
           <li>
             <a href="/">ReactJs</a>
           </li>
-          {/* <li>
-                        <a href="/">jQuery</a>
-                    </li> */}
-          <li>
-            <a href="/">Demos</a>
-          </li>
-          <li>
-            <a href="/extra">Extra</a>
-          </li>
-          <li>
-            <Link to="/add-post">Add</Link>
-          </li>
         </ul>
       </Container>
       <PromiseBasedActionComponent />

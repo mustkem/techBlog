@@ -1,5 +1,7 @@
 import React from 'react';
 import 'typeface-roboto';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'draft-js/dist/Draft.css';
 import './App.css';
 
@@ -11,22 +13,24 @@ import Layout from './Components/Layout/Layout';
 import HomeContainer from './Containers/HomeContainer/HomeContainer';
 import AddPostContainer from './Containers/AddPostContainer/AddPostContainer';
 import PostsContainer from './Containers/PostsContainer/PostsContainer';
-import Extra from './Components/Extra';
+import LoginAdmin from './Components/admin/Login';
 
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
           <BrowserRouter>
-            <Layout>
               <Switch>
-                <Route exact path="/" component={HomeContainer}/>
                 <Route path="/add-post" component={AddPostContainer}/>
-                <Route exact path="/extra" component={Extra}/>
+                
+
+                <Route exact path="/admin" component={LoginAdmin}/>
                 <Route exact path="/:slug" component={PostsContainer}/>
+                <Route exact path="/" component={HomeContainer}/>
+
+
                 
             </Switch>
-          </Layout>
           </BrowserRouter>
       </Provider>
     </div>
