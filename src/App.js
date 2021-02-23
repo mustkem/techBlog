@@ -1,5 +1,4 @@
 import React from 'react';
-import 'typeface-roboto';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'draft-js/dist/Draft.css';
@@ -13,6 +12,8 @@ import Layout from './Components/Layout/Layout';
 import HomeContainer from './Containers/HomeContainer/HomeContainer';
 import AddPostContainer from './Containers/AddPostContainer/AddPostContainer';
 import PostsContainer from './Containers/PostsContainer/PostsContainer';
+import PostDetail from './Containers/PostDetail/PostDetail';
+
 import LoginAdmin from './Components/admin/Login';
 
 function App() {
@@ -22,10 +23,11 @@ function App() {
           <BrowserRouter>
               <Switch>
                 <Route path="/add-post" component={AddPostContainer}/>
-                
 
                 <Route exact path="/admin" component={LoginAdmin}/>
-                <Route exact path="/:slug" component={PostsContainer}/>
+                <Route exact path="/admin/:slug" component={PostsContainer}/>
+                <Route exact path="/:slug" component={PostDetail}/>
+
                 <Route exact path="/" component={HomeContainer}/>
 
 

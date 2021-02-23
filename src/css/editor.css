@@ -11,7 +11,7 @@
     margin-top: 25px;
     text-decoration: none;
     font-size: 18px;
-    font-family: Roboto;
+    font-family: 'Inter', sans-serif;
     cursor: pointer;
     color: black;
   }
@@ -30,7 +30,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: Roboto;
+    font-family: 'Inter', sans-serif;
     color: white;
     background: #a21717;
   }
@@ -58,7 +58,7 @@
     background: #a21717;
     color: white;
     font-size: 18px;
-    font-family: Roboto;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
   }
   .author-link {
@@ -87,7 +87,7 @@
   .root {
     width: 100%;
     display: flex;
-    font-family: Roboto;
+    font-family: 'Inter', sans-serif;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -169,7 +169,7 @@
   
   .CodeMirror {
     /* Set height, width, borders, and global font properties here */
-    font-family: monospace;
+    font-family: 'Inter', sans-serif;
     height: 300px;
     color: black;
     direction: ltr;
@@ -514,7 +514,7 @@
   .demo-root {
     width: 90%;
     display: flex;
-    font-family: Roboto;
+    font-family: 'Inter', sans-serif;
     align-items: center;
     flex-direction: column;
     justify-content: center;

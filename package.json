@@ -19,6 +19,7 @@
     "react-bootstrap": "^1.5.0",
     "react-dom": "^16.9.0",
     "react-draft-wysiwyg": "^1.13.2",
+    "react-icons": "^4.2.0",
     "react-redux": "^7.1.0",
     "react-redux-firebase": "^2.4.0",
     "react-router": "^5.0.1",
@@ -28,7 +29,6 @@
     "redux": "^4.0.4",
     "redux-firestore": "^0.8.0",
     "redux-thunk": "^2.3.0",
-    "typeface-roboto": "0.0.75",
     "victory": "^33.1.2"
   },
   "scripts": {
