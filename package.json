@@ -1,6 +1,10 @@
 {
   "name": "marioplan",
   "version": "0.1.0",
+  "engines": {
+    "node": ">=12.14.1",
+    "npm": ">=6.13.4"
+  },
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.5.5",
