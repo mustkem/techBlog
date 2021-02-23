@@ -24,9 +24,6 @@ a {
   text-decoration: none !important;
 }
 
-#root {
-  background-color: #f7f8fc;
-}
 
 /* .MuiContainer-maxWidthLg {
     background: #fff;
@@ -41,7 +38,7 @@ a {
 /* starts */
 
 .header{
-  background-color: #fff;
+  background-color: #5f60c3;
   box-shadow: 0px 0px 19px -7px #b5b5b5;
 
 
@@ -223,12 +220,6 @@ a {
   width: 216px;
 }
 
-.post-content {
-  color: #555;
-  font-size: 18px;
-  margin: 36px 0;
-}
-
 #authorBox h3 {
   font-size: 18px;
   color: #333;
@@ -315,32 +306,13 @@ a {
 
 /* close commented backslash hack */
 
-.posts .post-wrap .link {
-  display: flex;
-  /* or inline-flex */
-  color: #4c1380;
-}
 
-.post-list .post-image {
-  width: 20%;
-  margin-top: 10px;
-  border-radius: 4px;
-  opacity: 1;
-  -webkit-transition: opacity 1s;
-  transition: opacity 1s;
-}
 
-.post-list .post-preview {
-  padding: 0 30px;
-}
-
-.post-list .desc {
-  padding: 0 5px;
-}
 
 .banner-adv {
-  padding: 35px 0;
+  padding: 25px 0;
   text-align: center;
+  margin-bottom: 24px;
 }
 
 h4 {

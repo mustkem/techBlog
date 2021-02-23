@@ -1,13 +1,13 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Author from './Author'
-import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import { path } from 'ramda';
 
 import SideBanner from '../Layout/SideBanner/SideBanner';
-import { lineHeight } from '@material-ui/system';
+
+import PostItem from './components/PostItem'
 
 import Layout from '../Layout/Layout'
 
@@ -27,41 +27,28 @@ class Home extends React.Component {
         return (
             <Layout >
             <div className="home">
-                <Container>
-                    <AdvertBannerTop />
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} sm={8} >
+            <AdvertBannerTop />
+                <div className="container">
+                    
+                    <div className="row" >
+                        <div className="col" >
 
                             <ul className="posts post-list">
                                 {
                                     this.props.posts && this.props.posts.map((item, index) => {
                                         return (
-                                            <li className="post-wrap" key={index}>
-                                                <Link className="link title" to={'/' + item.slug}>
-                                                    <div className="post-image">
-                                                        <img src="images/JavaScriptListImage.png" />
-                                                    </div>
-                                                    <div className="post-preview" >
-                                                        <h2>{item.title}</h2>
-                                                        <div className="desc">
-                                                            {
-                                                                item.desc
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                            </li>
+                                           <PostItem item={item} key={index} />
                                         )
                                     })
                                 }
 
                             </ul>
-                        </Grid>
-                        <Grid className="side-banner" item xs={0} sm={4}>
+                        </div>
+                        <div className="side-banner" xs={0} sm={4}>
                             <SideBanner />
-                        </Grid>
-                    </Grid>
-                </Container>
+                        </div>
+                    </div>
+                </div>
             </div>
             </Layout>
         )
