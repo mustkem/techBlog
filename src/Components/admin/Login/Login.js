@@ -30,7 +30,7 @@ function Login(props) {
     })
       .then(function (response) {
         localStorage.setItem("codemedium-token-admin", response.data.token);
-        history.push("/admin/add/post");
+        history.push("/admin/posts/home");
 
         return response.data;
       })

@@ -46,8 +46,6 @@ class Home extends React.Component {
 
     render() {
 
-        console.log("sd", this.state.posts);
-
         return (
             <Layout >
             <div className="home">

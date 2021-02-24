@@ -7,7 +7,7 @@ function PostItem(props) {
   const { item } = props;
   return (
     <li className="post-card">
-      <Link className="link title" to={"/" + item.slug}>
+      <Link className="link title" to={"/admin/" + item.slug}>
         <div className="post-content">
           <div className="sec-1">
             <h2>{item.title}</h2>

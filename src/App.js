@@ -17,6 +17,8 @@ import AdminPosts from './Components/admin/Home/Home'
 
 import LoginAdmin from './Components/admin/Login';
 
+import Admin from './Components/admin/Admin'
+
 function App() {
   return (
     <div className="App">
@@ -25,16 +27,18 @@ function App() {
               <Switch>
                 {/* <Route path="/add-post" component={AddPostContainer}/> */}
 
-                <Route exact path="/admin" component={LoginAdmin}/>
-                <Route exact path="/admin/:slug" component={PostsContainer}/>
+                 <Route path="/admin" component={Admin}/>
+                {/*<Route exact path="/admin/:slug" component={PostsContainer}/>
                 <Route exact path="/admin/posts/home" component={AdminPosts}/>
 
-                <Route exact path="/admin/add/post" component={AddPostContainer}/>
+                <Route exact path="/admin/add/post" component={AddPostContainer}/> */}
 
 
                 <Route exact path="/:slug" component={PostDetail}/>
 
                 <Route exact path="/" component={HomeContainer}/>
+
+
 
 
                 
