@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import AddPost from '../../Components/AddPost/AddPost';
+import AddPost from '../../Components/admin/AddPost/AddPost';
 import * as homeActions from '../../Store/Actions/actions';
 
 

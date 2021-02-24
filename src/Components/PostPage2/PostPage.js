@@ -23,7 +23,7 @@ import {
 
 import SideBanner from "../Layout/SideBanner/SideBanner";
 import Author from "../Home/Author";
-import MyEditor from "../AddPost/MyEditor";
+import MyEditor from "../admin/AddPost/MyEditor";
 import AdvertBannerTop from "../sharedComponents/Advert/AdvertBannerTop";
 
 import Layout from "../Layout/Layout";

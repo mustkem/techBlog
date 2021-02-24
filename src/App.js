@@ -8,11 +8,12 @@ import { Provider } from 'react-redux';
 import store from './Store/store';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Layout from './Components/Layout/Layout';
 import HomeContainer from './Containers/HomeContainer/HomeContainer';
 import AddPostContainer from './Containers/AddPostContainer/AddPostContainer';
 import PostsContainer from './Containers/PostsContainer/PostsContainer';
 import PostDetail from './Containers/PostDetail/PostDetail';
+
+import AdminPosts from './Components/admin/Home/Home'
 
 import LoginAdmin from './Components/admin/Login';
 
@@ -22,10 +23,15 @@ function App() {
       <Provider store={store}>
           <BrowserRouter>
               <Switch>
-                <Route path="/add-post" component={AddPostContainer}/>
+                {/* <Route path="/add-post" component={AddPostContainer}/> */}
 
                 <Route exact path="/admin" component={LoginAdmin}/>
                 <Route exact path="/admin/:slug" component={PostsContainer}/>
+                <Route exact path="/admin/posts/home" component={AdminPosts}/>
+
+                <Route exact path="/admin/add/post" component={AddPostContainer}/>
+
+
                 <Route exact path="/:slug" component={PostDetail}/>
 
                 <Route exact path="/" component={HomeContainer}/>

@@ -1,9 +1,8 @@
-
-import React from 'react';
-import { Editor, EditorState, RichUtils, ContentState } from 'draft-js';
+import React from "react";
+import { Editor, EditorState, RichUtils, ContentState } from "draft-js";
 
 // import htmlToDraft from 'html-to-draftjs';
-import { stateFromHTML } from 'draft-js-import-html';
+import { stateFromHTML } from "draft-js-import-html";
 
 class MyEditor extends React.Component {
   constructor(props) {
@@ -26,7 +25,6 @@ class MyEditor extends React.Component {
   }
 
   componentDidMount() {
-
     let contentState = stateFromHTML(this.props.content);
 
     // const blocksFromHtml = htmlToDraft(this.props.content);
@@ -34,8 +32,8 @@ class MyEditor extends React.Component {
     // const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
     const editorState = EditorState.createWithContent(contentState);
     this.setState({
-      editorState: editorState
-    })
+      editorState: editorState,
+    });
   }
 
   _handleKeyCommand(command) {
@@ -54,87 +52,79 @@ class MyEditor extends React.Component {
   }
 
   _toggleBlockType(blockType) {
-    this.onChange(
-      RichUtils.toggleBlockType(
-        this.state.editorState,
-        blockType
-      )
-    );
+    this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
   }
 
   _toggleInlineStyle(inlineStyle) {
     this.onChange(
-      RichUtils.toggleInlineStyle(
-        this.state.editorState,
-        inlineStyle
-      )
+      RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle)
     );
   }
 
   handleChange = (e, key) => {
     this.setState({
-      [key]: e.target.value
-    })
-  }
+      [key]: e.target.value,
+    });
+  };
 
-  updatePost = (e) => {
-    e.preventDefault()
-    let slug = this.state.title.replace(/\s/g, '-');
+  addPost = (e) => {
+    e.preventDefault();
+    let slug = this.state.title.replace(/\s/g, "-");
     if (this.props.slug) {
-      slug = this.props.slug
+      slug = this.props.slug;
     }
 
     let payload = {
-      dataToPost: {
         title: this.state.title,
         desc: this.state.desc,
         content: this.refs.editor.editor.innerHTML,
-        authorFirstName: 'Mi',
-        authorLastName: "Nin",
-        authorId: this.state.authorId,
-        createdAt: new Date(),
-        slug: slug
-      },
-      query: {
-        ...this.props.query,
-        id: this.props.id
-      }
-    }
-    if(this.state.authorId==='8958'){
-      this.props.updatePost(payload);
+        creater: "6035c940ab2e02358fac6e6b",
+        slug: slug,
+    };
+    if (this.state.authorId === "8958") {
+      this.props.addPost(payload);
       alert("So far so good");
     }
-  }
+  };
 
   render() {
     const { editorState } = this.state;
 
     // If the user changes block type before entering any text, we can
     // either style the placeholder or hide it. Let's just hide it now.
-    let className = 'RichEditor-editor';
+    let className = "RichEditor-editor";
     var contentState = editorState.getCurrentContent();
     if (!contentState.hasText()) {
-      if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-        className += ' RichEditor-hidePlaceholder';
+      if (contentState.getBlockMap().first().getType() !== "unstyled") {
+        className += " RichEditor-hidePlaceholder";
       }
     }
 
     return (
       <div className="my-editor">
         <div>
-          <p>
-            Write Post
-                </p>
+          <p>Write Post</p>
         </div>
-        <div>
+        <div style={{ textAlign: "center", marginBottom: 15 }}>
           <p>Title</p>
-          <input value={this.state.title} onChange={(e) => { this.handleChange(e, "title") }} placeholder="title..."></input>
+          <input
+            style={{ width: "50%" }}
+            value={this.state.title}
+            onChange={(e) => {
+              this.handleChange(e, "title");
+            }}
+            placeholder="title..."
+          ></input>
         </div>
-        <div>
-          <p>
-            Description
-                </p>
-          <textarea value={this.state.desc} onChange={(e) => { this.handleChange(e, "desc") }} />
+        <div style={{ textAlign: "center", marginBottom: 15 }}>
+          <p>Description</p>
+          <textarea
+           style={{ width: "50%" }}
+            value={this.state.desc}
+            onChange={(e) => {
+              this.handleChange(e, "desc");
+            }}
+          />
         </div>
         <div className="edittor-wrp RichEditor-root">
           <BlockStyleControls
@@ -147,34 +137,31 @@ class MyEditor extends React.Component {
           />
           <div className={className} onClick={this.focus}>
             <Editor
-
               blockStyleFn={getBlockStyle}
               customStyleMap={styleMap}
               editorState={editorState}
               handleKeyCommand={this.handleKeyCommand}
               onChange={this.onChange}
               onTab={this.onTab}
-
               ref="editor"
               spellCheck={true}
             />
           </div>
-
         </div>
         <div className="bttn-wrap">
-          <form className="author-id-form" onSubmit={this.updatePost}>
-          <div class="grp">
-            <label>Author Id </label>
-            <input type="password" value={this.state.authorId} onChange={(e)=>{this.setState({authorId:e.target.value})}} />
+          <form className="author-id-form" onSubmit={this.addPost}>
+            <div class="grp">
+              <label>Author Id </label>
+              <input
+                type="password"
+                value={this.state.authorId}
+                onChange={(e) => {
+                  this.setState({ authorId: e.target.value });
+                }}
+              />
             </div>
-            {
-              !this.props.editPost &&
-              <button>Publish</button>
-            }
-            {
-              this.props.editPost &&
-                <button> Update </button>
-            }
+            {!this.props.editPost && <button>Publish</button>}
+            {this.props.editPost && <button> Update </button>}
           </form>
         </div>
       </div>
@@ -185,7 +172,7 @@ class MyEditor extends React.Component {
 // Custom overrides for "code" style.
 const styleMap = {
   CODE: {
-    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    backgroundColor: "rgba(0, 0, 0, 0.05)",
     fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
     fontSize: 16,
     padding: 2,
@@ -194,8 +181,10 @@ const styleMap = {
 
 function getBlockStyle(block) {
   switch (block.getType()) {
-    case 'blockquote': return 'RichEditor-blockquote';
-    default: return null;
+    case "blockquote":
+      return "RichEditor-blockquote";
+    default:
+      return null;
   }
 }
 
@@ -208,11 +197,10 @@ class StyleButton extends React.Component {
     };
   }
 
-
   render() {
-    let className = 'RichEditor-styleButton';
+    let className = "RichEditor-styleButton";
     if (this.props.active) {
-      className += ' RichEditor-activeButton';
+      className += " RichEditor-activeButton";
     }
 
     return (
@@ -224,16 +212,16 @@ class StyleButton extends React.Component {
 }
 
 const BLOCK_TYPES = [
-  { label: 'H1', style: 'header-one' },
-  { label: 'H2', style: 'header-two' },
-  { label: 'H3', style: 'header-three' },
-  { label: 'H4', style: 'header-four' },
-  { label: 'H5', style: 'header-five' },
-  { label: 'H6', style: 'header-six' },
-  { label: 'Blockquote', style: 'blockquote' },
-  { label: 'UL', style: 'unordered-list-item' },
-  { label: 'OL', style: 'ordered-list-item' },
-  { label: 'Code Block', style: 'code-block' },
+  { label: "H1", style: "header-one" },
+  { label: "H2", style: "header-two" },
+  { label: "H3", style: "header-three" },
+  { label: "H4", style: "header-four" },
+  { label: "H5", style: "header-five" },
+  { label: "H6", style: "header-six" },
+  { label: "Blockquote", style: "blockquote" },
+  { label: "UL", style: "unordered-list-item" },
+  { label: "OL", style: "ordered-list-item" },
+  { label: "Code Block", style: "code-block" },
 ];
 
 const BlockStyleControls = (props) => {
@@ -246,7 +234,7 @@ const BlockStyleControls = (props) => {
 
   return (
     <div className="RichEditor-controls">
-      {BLOCK_TYPES.map((type) =>
+      {BLOCK_TYPES.map((type) => (
         <StyleButton
           key={type.label}
           active={type.style === blockType}
@@ -254,23 +242,23 @@ const BlockStyleControls = (props) => {
           onToggle={props.onToggle}
           style={type.style}
         />
-      )}
+      ))}
     </div>
   );
 };
 
 var INLINE_STYLES = [
-  { label: 'Bold', style: 'BOLD' },
-  { label: 'Italic', style: 'ITALIC' },
-  { label: 'Underline', style: 'UNDERLINE' },
-  { label: 'Monospace', style: 'CODE' },
+  { label: "Bold", style: "BOLD" },
+  { label: "Italic", style: "ITALIC" },
+  { label: "Underline", style: "UNDERLINE" },
+  { label: "Monospace", style: "CODE" },
 ];
 
 const InlineStyleControls = (props) => {
   var currentStyle = props.editorState.getCurrentInlineStyle();
   return (
     <div className="RichEditor-controls">
-      {INLINE_STYLES.map(type =>
+      {INLINE_STYLES.map((type) => (
         <StyleButton
           key={type.label}
           active={currentStyle.has(type.style)}
@@ -278,8 +266,7 @@ const InlineStyleControls = (props) => {
           onToggle={props.onToggle}
           style={type.style}
         />
-      )}
-
+      ))}
     </div>
   );
 };

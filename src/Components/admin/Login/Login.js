@@ -9,7 +9,7 @@ import './style/index.scss';
 
 function Login(props) {
 
-  const [formDataLogin, setFormData] = useState({ phone_num: "", password: "" });
+  const [formDataLogin, setFormData] = useState({ email: "", password: "" });
   const history = useHistory();
 
   const handleChangeLogin = (key, e) => {
@@ -25,12 +25,12 @@ function Login(props) {
 
     axios({
       method: "post",
-      url: API_URL + "/auth/login",
+      url: API_URL + "/admin/auth/login",
       data: formDataLogin,
     })
       .then(function (response) {
-        localStorage.setItem("woodenculture-token-admin", response.data.token);
-        history.push("/dashboard/add-product");
+        localStorage.setItem("codemedium-token-admin", response.data.token);
+        history.push("/admin/add/post");
 
         return response.data;
       })
@@ -49,14 +49,14 @@ function Login(props) {
             <h2>Admin</h2>
             <Form onSubmit={handleSubmitLogin}>
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>Mobile Number</Form.Label>
+                <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter mobile number"
+                  placeholder="Enter email"
                   onChange={(e) => {
-                    handleChangeLogin("phone_num", e);
+                    handleChangeLogin("email", e);
                   }}
-                  value={formDataLogin.phone_num}
+                  value={formDataLogin.email}
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
