@@ -10,6 +10,8 @@ import { API_URL } from "../../../config";
 import PostItem from './components/PostItem';
 import { getAdminPosts } from '../../../Store/Actions/actions';
 
+import Layout from '../Layout/Layout'
+
 
 class Home extends React.Component {
     constructor(props) {
@@ -21,7 +23,7 @@ class Home extends React.Component {
     componentDidMount() {
         axios({
             method: "get",
-            url: API_URL + "/admin/feed/post",
+            url: API_URL + "/admin/feed/posts",
             headers: {
               "Content-Type": "application/json",
               Authorization: "Bearer " + localStorage.getItem("codemedium-token-admin"),
@@ -32,7 +34,7 @@ class Home extends React.Component {
           })
             .then( (response)=> {
                 this.setState({
-                    posts:response.data
+                    posts:response.data.posts
                 })
                 return response.data;
             })
@@ -44,17 +46,19 @@ class Home extends React.Component {
 
     render() {
 
-        console.log("testrr")
+        console.log("sd", this.state.posts);
+
         return (
+            <Layout >
             <div className="home">
                 <div className="container">
-                    <h3>Posts</h3>
+                    <h3 style={{marginBottom:30}}>Posts</h3>
                     <div className="row" >
-                        <div className="col" >
+                        <div className="col-9" >
 
                             <ul className="posts post-list">
                                 {
-                                    this.props.posts && this.props.posts.map((item, index) => {
+                                    this.state.posts && this.state.posts.map((item, index) => {
                                         return (
                                            <PostItem item={item} key={index} />
                                         )
@@ -68,6 +72,7 @@ class Home extends React.Component {
                     </div>
                 </div>
             </div>
+            </Layout>
         )
     }
 }

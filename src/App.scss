@@ -7,6 +7,10 @@
     font-family: 'Inter', sans-serif;
 }
 
+li{
+  list-style: none;
+}
+
 @media only screen and (max-width: 767px) {
   /* STYLES HERE for BROWSER WINDOWS with a max-width of 480px. 
      This will work on desktops when the window is narrowed.  */
