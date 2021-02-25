@@ -68,7 +68,7 @@ class MyEditor extends React.Component {
     });
   };
 
-  addPost = (e) => {
+  updatePost = (e) => {
     e.preventDefault();
     let slug = this.state.title.replace(/\s/g, "-");
     if (this.props.slug) {
@@ -79,12 +79,11 @@ class MyEditor extends React.Component {
         title: this.state.title,
         desc: this.state.desc,
         content: this.refs.editor.editor.innerHTML,
-        creater: "6035c940ab2e02358fac6e6b",
         slug: slug,
     };
+    console.log("test")
     if (this.state.authorId === "8958") {
-      this.props.addPost(payload);
-      alert("So far so good");
+      this.props.updatePost(payload);
     }
   };
 
@@ -150,7 +149,7 @@ class MyEditor extends React.Component {
           </div>
         </div>
         <div className="bttn-wrap">
-          <form className="author-id-form" onSubmit={this.addPost}>
+          <form className="author-id-form" onSubmit={this.updatePost}>
             <div class="grp">
               <label>Author Id </label>
               <input
@@ -161,8 +160,7 @@ class MyEditor extends React.Component {
                 }}
               />
             </div>
-            {!this.props.editPost && <Button>Publish</Button>}
-            {this.props.editPost && <Button> Update </Button>}
+            {this.props.editPost && <Button type="submit"> Update </Button>}
           </form>
         </div>
       </div>
