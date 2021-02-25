@@ -15,13 +15,13 @@ export default (props) => {
           </Link>
         </div>
         <ul className="navbar-main">
-          {/* <li>
-            <a className="react" href="/">React</a>
-          </li>
           <li>
-            <a className="javascript" href="/">Javascript</a>
+            <Link style={{color:"black",background:"white"}} className="" to="/admin/add/post">Add Post</Link>
           </li>
-           */}
+          {/* <li>
+            <a className="javascript" href="/">Javascript</a>
+          </li> */}
+          
         </ul>
         </div>
       </div>

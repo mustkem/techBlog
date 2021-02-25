@@ -3,7 +3,12 @@ import { Editor, EditorState, RichUtils, ContentState } from "draft-js";
 
 // import htmlToDraft from 'html-to-draftjs';
 import { stateFromHTML } from "draft-js-import-html";
-import { Button } from 'react-bootstrap'
+import { Button } from "react-bootstrap";
+
+import axios from "axios";
+import { API_URL } from "../../../config";
+
+import { withRouter } from "react-router";
 
 class MyEditor extends React.Component {
   constructor(props) {
@@ -76,15 +81,31 @@ class MyEditor extends React.Component {
     }
 
     let payload = {
-        title: this.state.title,
-        desc: this.state.desc,
-        content: this.refs.editor.editor.innerHTML,
-        creater: "6035c940ab2e02358fac6e6b",
-        slug: slug,
+      title: this.state.title,
+      desc: this.state.desc,
+      content: this.refs.editor.editor.innerHTML,
+      creater: "6035c940ab2e02358fac6e6b",
+      slug: slug,
     };
     if (this.state.authorId === "8958") {
-      this.props.addPost(payload);
-      alert("So far so good");
+      axios({
+        method: "post",
+        url: API_URL + "/admin/feed/post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + localStorage.getItem("codemedium-token-admin"),
+        },
+        data: payload,
+      })
+        .then((response) => {
+          alert("Post added");
+          this.props.history.push("/admin/posts/home");
+          return response.data;
+        })
+        .catch(function (error) {
+          return error;
+        });
     }
   };
 
@@ -120,7 +141,7 @@ class MyEditor extends React.Component {
         <div style={{ textAlign: "center", marginBottom: 15 }}>
           <p>Description</p>
           <textarea
-           style={{ width: "50%" }}
+            style={{ width: "50%" }}
             value={this.state.desc}
             onChange={(e) => {
               this.handleChange(e, "desc");
@@ -161,8 +182,8 @@ class MyEditor extends React.Component {
                 }}
               />
             </div>
-            {!this.props.editPost && <Button>Publish</Button>}
-            {this.props.editPost && <Button> Update </Button>}
+            {!this.props.editPost && <Button type="submit">Publish</Button>}
+            {this.props.editPost && <Button type="submit"> Update </Button>}
           </form>
         </div>
       </div>
@@ -272,4 +293,4 @@ const InlineStyleControls = (props) => {
   );
 };
 
-export default MyEditor;
+export default withRouter(MyEditor);

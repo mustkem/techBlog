@@ -1,7 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
 
-
 import MyEditor from "./MyEditor";
 import { Button } from "react-bootstrap";
 
@@ -56,7 +55,30 @@ class PostDetail extends React.Component {
           post: response.data.post,
         });
         alert("Updated");
-        this.props.history.push("/admin/posts/home")
+        this.props.history.push("/admin/posts/home");
+        return response.data;
+      })
+      .catch(function (error) {
+        alert("Error");
+
+        return error;
+      });
+  };
+
+  deletePost = () => {
+    alert("Click ok to confirm");
+    axios({
+      method: "delete",
+      url: API_URL + "/admin/feed/post/" + this.props.match.params.slug,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + localStorage.getItem("codemedium-token-admin"),
+      },
+    })
+      .then((response) => {
+        alert("Deleted");
+        this.props.history.push("/admin/posts/home");
         return response.data;
       })
       .catch(function (error) {
@@ -87,6 +109,9 @@ class PostDetail extends React.Component {
                   <Button onClick={this.onEditClick}>
                     {!this.state.editPost && "Edit Post"}
                     {this.state.editPost && "View Post"}
+                  </Button>
+                  <Button style={{marginLeft:10}} variant="danger" onClick={this.deletePost}>
+                    Delete Post
                   </Button>
                 </div>
 

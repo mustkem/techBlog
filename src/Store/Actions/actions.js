@@ -6,21 +6,21 @@ import { API_URL } from "../../config";
 export const addPost = (payload) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
 
-    axios({
-      method: "post",
-      url: API_URL + "/admin/feed/post",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("codemedium-token-admin"),
-      },
-      data:payload
-    })
-      .then(function (response) {
-          return response.data;
-      })
-      .catch(function (error) {
-        return error;
-      });
+    // axios({
+    //   method: "post",
+    //   url: API_URL + "/admin/feed/post",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: "Bearer " + localStorage.getItem("codemedium-token-admin"),
+    //   },
+    //   data:payload
+    // })
+    //   .then(function (response) {
+    //       return response.data;
+    //   })
+    //   .catch(function (error) {
+    //     return error;
+    //   });
 
   };
 };
