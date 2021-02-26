@@ -1,54 +1,85 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route,  useParams,
-    useRouteMatch } from 'react-router-dom';
-
-    
-import AddPostContainer from '../../Containers/AddPostContainer/AddPostContainer';
-import PostsContainer from '../../Containers/PostsContainer/PostsContainer';
-
-import AdminPosts from './Home/Home'
-
-import LoginAdmin from './Login';
-
-import PostDetail from './PostDetail/PostDetail'
+import React from "react";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
+import axios from "axios";
+import { connect } from "react-redux";
 
-function Admin() {
+import { API_URL } from "../../config";
+import { loginAction } from "../../Store/Actions/actions";
 
-    let { path, url } = useRouteMatch();
+import AddPostContainer from "../../Containers/AddPostContainer/AddPostContainer";
+import AdminPosts from "./Home/Home";
+import LoginAdmin from "./Login";
+import PostDetail from "./PostDetail/PostDetail";
 
-    console.log("path", path)
+function Admin(props) {
+  let { path, url } = useRouteMatch();
+  const history = useHistory();
 
-    return (
-        <div>
-            <Switch>
 
-                {/* <Route exact path="/admin" component={LoginAdmin}/>
-                <Route exact path="/admin/:slug" component={PostsContainer}/>
-                <Route exact path="/admin/posts/home" component={AdminPosts}/>
+  const [isValid, setIsValid] = React.useState(true);
 
-                <Route exact path="/admin/add/post" component={AddPostContainer}/> */}
+  React.useEffect(() => {
+    return axios({
+      method: "get",
+      url: API_URL + "/admin/auth/status",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + localStorage.getItem("codemedium-token-admin"),
+      },
+    })
+      .then(function (response) {
+        setIsValid(true);
+        props.loginAction(response.data.user);
+        return response.data;
+      })
+      .catch(function (error) {
+        setIsValid(false);
+        history.push("/admin");
+        console.log(error);
+      });
+  }, []);
 
-                <Route exact path={path}>
-                    <LoginAdmin />
-                </Route>
-                
-                <Route exact path={`${path}/posts/home`}>
-                    <AdminPosts />
-                </Route>
-                <Route exact path={`${path}/add/post`}>
-                    <AddPostContainer />
-                </Route>
+  return (
+    <div>
+      <Switch>
+        <Route exact path={path}>
+          <LoginAdmin />
+        </Route>
+      </Switch>
+      {/* {isValid && ( */}
+        <Switch>
+          <Route exact path={`${path}/posts/home`}>
+            <AdminPosts />
+          </Route>
+          <Route exact path={`${path}/add/post`}>
+            <AddPostContainer />
+          </Route>
 
-                <Route exact path={`${path}/:postId`}>
-                    <PostDetail />
-                </Route>
-                
-                
-            </Switch>
-        </div>
-    )
+          <Route exact path={`${path}/:postId`}>
+            <PostDetail />
+          </Route>
+        </Switch>
+      {/* )} */}
+    </div>
+  );
 }
 
-export default Admin
+//
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginAction: (payload) => dispatch(loginAction(payload)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Admin);

@@ -1,6 +1,5 @@
 import { actionTypes } from "../ActionsTypes/actionTypes";
 import axios from 'axios';
-
 import { API_URL } from "../../config";
 
 export const addPost = (payload) => {
@@ -128,3 +127,32 @@ export const updatePost = (payload) => {
       });
   };
 };
+
+export const login = (payload) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+
+   return axios({
+      method: "post",
+      url: API_URL + "/admin/auth/login",
+      data: payload,
+    })
+      .then(function (response) {
+        localStorage.setItem("codemedium-token-admin", response.data.token);
+        dispatch(loginAction(response.data.user));
+        return response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  };
+};
+
+
+export function loginAction(payload) {
+  return {
+    type: actionTypes.LOGIN_SUCCESS,
+    payload
+  }
+}
+

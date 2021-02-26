@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 
-import { API_URL } from "../../../config";
+import { login } from "../../../Store/Actions/actions";
 
-import './style/index.scss';
+import "./style/index.scss";
 
 function Login(props) {
-
   const [formDataLogin, setFormData] = useState({ email: "", password: "" });
   const history = useHistory();
 
@@ -23,23 +23,13 @@ function Login(props) {
   const handleSubmitLogin = (e) => {
     e.preventDefault();
 
-    axios({
-      method: "post",
-      url: API_URL + "/admin/auth/login",
-      data: formDataLogin,
-    })
-      .then(function (response) {
-        localStorage.setItem("codemedium-token-admin", response.data.token);
+    props
+      .login(formDataLogin)
+      .then((res) => {
         history.push("/admin/posts/home");
-
-        return response.data;
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch((err) => {});
   };
-
-  console.log("test1")
 
   return (
     <div className="login-page">
@@ -83,4 +73,10 @@ function Login(props) {
   );
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (payload) => dispatch(login(payload)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Login);

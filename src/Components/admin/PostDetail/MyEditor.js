@@ -98,6 +98,7 @@ class MyEditor extends React.Component {
       }
     }
 
+
     return (
       <div className="my-editor">
         <div>
@@ -114,6 +115,7 @@ class MyEditor extends React.Component {
             placeholder="title..."
           ></input>
         </div>
+        dsdf
         <div style={{ textAlign: "center", marginBottom: 15 }}>
           <p>Description</p>
           <textarea
