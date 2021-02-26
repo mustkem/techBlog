@@ -1,32 +1,74 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PromiseBasedActionComponent from "../../Containers/promiseBasedActionContianer";
 
-export default (props) => {
+import { withRouter } from "react-router";
+import { connect } from "react-redux";
+import { parse, stringify } from "query-string";
+import { Button } from "react-bootstrap";
+
+import * as homeActions from "../../Store/Actions/actions";
+
+const Header = (props) => {
+  const hadlePageChange = (payload) => {
+    const query = parse(props.location.search);
+    query.category = payload.category;
+    props.history.push("/?" + stringify(query));
+    props.getPosts(query);
+  };
+
   return (
     <div className="header top">
-      <div className="container" >
-        <div className="header-content"  style={{display:"flex"}}>
-        <div className="logo-wrp">
-          <Link to="/">
-          <img style={{minWidth:35}} className="logo" src="/images/logo.png" />
-            <span style={{position:"relative", top:1, marginLeft:8}}>
-            Code Medium
-            </span>
-          </Link>
-        </div>
-        <ul className="navbar-main">
-          <li>
-            <a className="react" href="/">React</a>
-          </li>
-          <li>
-            <a className="javascript" href="/">Javascript</a>
-          </li>
-          
-        </ul>
+      <div className="container">
+        <div className="header-content" style={{ display: "flex" }}>
+          <div className="logo-wrp">
+            <div
+              className="logo-sec"
+              onClick={() => {
+                hadlePageChange({ category: "" });
+              }}
+            >
+              <img
+                style={{ minWidth: 35 }}
+                className="logo"
+                src="/images/logo.png"
+              />
+              <span style={{ position: "relative", top: 1, marginLeft: 8 }}>
+                Code Medium
+              </span>
+            </div>
+          </div>
+          <ul className="navbar-main">
+            <li>
+              <Button
+                className="link react"
+                onClick={() => {
+                  hadlePageChange({ category: "react" });
+                }}
+              >
+                React
+              </Button>
+            </li>
+            <li>
+              <Button
+                className="link javascript"
+                onClick={() => {
+                  hadlePageChange({ category: "javascript" });
+                }}
+              >
+                Javascript
+              </Button>
+            </li>
+          </ul>
         </div>
       </div>
-      <PromiseBasedActionComponent />
     </div>
   );
 };
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getPosts: (payload) => dispatch(homeActions.getPosts2(payload)),
+  };
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(Header));

@@ -7,16 +7,23 @@ function PostItem(props) {
   const { item } = props;
   return (
     <li className="post-card">
-      <Link className="link title" to={"/" + item.slug}>
+      <Link className="link title"  to={"/" + item.slug}>
         <div className="post-content">
           <div className="sec-1">
-            <h2>{item.title}</h2>
-            <div className="desc">{item.desc}</div>
+            <div>
+              <h2>{item.title}</h2>
+              <div className="desc">{item.desc}</div>
+            </div>
+            <div className="category-sec">
+              {item.categories && item.categories.map((item) => {
+                return <div className="category"> {item.label} </div>;
+              })}
+            </div>
           </div>
           <div className="sec-2">
-              <div className="figure-content">
-                <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1614007213032/5oqCMexP9.webp?w=600&fit=crop&crop=entropy&auto=compress" />
-              </div>
+            <div className="figure-content">
+              <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1614007213032/5oqCMexP9.webp?w=600&fit=crop&crop=entropy&auto=compress" />
+            </div>
           </div>
         </div>
       </Link>
@@ -25,3 +32,19 @@ function PostItem(props) {
 }
 
 export default PostItem;
+
+// <li className="post-card">
+//       <Link className="link title" to={"/" + item.slug}>
+//         <div className="post-content">
+//           <div className="sec-1">
+//             <h2>{item.title}</h2>
+//             <div className="desc">{item.desc}</div>
+//           </div>
+//           <div className="sec-2">
+//               <div className="figure-content">
+//                 <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1614007213032/5oqCMexP9.webp?w=600&fit=crop&crop=entropy&auto=compress" />
+//               </div>
+//           </div>
+//         </div>
+//       </Link>
+//     </li>

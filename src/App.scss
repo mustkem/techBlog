@@ -61,12 +61,14 @@ a {
 
 .navbar-main li {
   list-style: none;
-  a{
+  .link{
       display: block;
       padding: 4px 19px;
       color: $primary_color;
       margin-left: 15px;
       border-radius: 4px;
+      outline: 0 !important;
+      border:0 !important;
       &.react{
         background-color: #20232a;
         color: #61dafb;
@@ -89,7 +91,7 @@ a {
   padding: 18px 0;
 
   .logo-wrp{
-    a{
+    .logo-sec{
       height: 100%;
       display: block;
       padding: 4px 19px;
@@ -97,6 +99,7 @@ a {
       background-color: #fff;
       border-radius: 4px;
       font-weight: 400;
+      cursor: pointer;
 
     }
   }
@@ -331,7 +334,7 @@ pre{
 .banner-adv {
   padding: 25px 0;
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
 }
 
 h4 {

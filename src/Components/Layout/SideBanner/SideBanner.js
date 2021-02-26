@@ -16,7 +16,7 @@ export default () => {
           style={{ width: 300, height: 600 }}
         ></iframe>
       </div>
-      <div className="advertisement">
+      {/* <div className="advertisement">
         <img src="/images/right-banner4.png" />
       </div>
       <div className="advertisement">
@@ -24,7 +24,7 @@ export default () => {
       </div>
       <div className="advertisement">
         <img src="/images/right-banner-2.png" />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
 
 import { connect } from 'react-redux';
 import { path } from 'ramda';
+import { parse } from 'query-string'
+import { withRouter } from 'react-router-dom'
+
 
 import SideBanner from '../Layout/SideBanner/SideBanner';
 
@@ -21,7 +22,8 @@ class Home extends React.Component {
         }
     }
     componentDidMount() {
-        this.props.getPosts();
+        const query = parse(this.props.location.search);
+        this.props.getPosts(query);
     }
     render() {
         return (
@@ -60,4 +62,4 @@ const mapStateToProps = (state) => {
         posts: path(["page", "posts"], state)
     }
 }
-export default connect(mapStateToProps)(Home);
+export default withRouter(connect(mapStateToProps)(Home));

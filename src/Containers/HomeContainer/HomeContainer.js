@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getPosts: (payload) => dispatch(homeActions.getPosts(payload))
+    getPosts: (payload) => dispatch(homeActions.getPosts2(payload))
   }
 }
 

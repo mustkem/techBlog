@@ -84,6 +84,24 @@ export const getPosts = (payload) => {
   };
 };
 
+export const getPosts2 = (payload) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    return axios({
+      method: "get",
+      url: API_URL + "/feed/posts",
+      params:payload
+    })
+      .then(function (response) {
+        dispatch(onGetPosts(response.data.posts));
+        return response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  };
+};
+
 export const getPost = (payload) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const fireStore = getFirestore();
