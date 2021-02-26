@@ -17,7 +17,7 @@ class MyEditor extends React.Component {
       title: this.props.title,
       desc: this.props.desc,
       editorState: EditorState.createEmpty(),
-      authorId: null,
+      authorCode: null,
     };
 
     this.focus = () => this.refs.editor.focus();
@@ -86,27 +86,27 @@ class MyEditor extends React.Component {
       content: this.refs.editor.editor.innerHTML,
       creater: "6035c940ab2e02358fac6e6b",
       slug: slug,
+      authorCode: this.state.authorCode,
     };
-    if (this.state.authorId === "8958") {
-      axios({
-        method: "post",
-        url: API_URL + "/admin/feed/post",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer " + localStorage.getItem("codemedium-token-admin"),
-        },
-        data: payload,
+    
+    axios({
+      method: "post",
+      url: API_URL + "/admin/feed/post",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + localStorage.getItem("codemedium-token-admin"),
+      },
+      data: payload,
+    })
+      .then((response) => {
+        alert("Post added");
+        this.props.history.push("/admin/posts/home");
+        return response.data;
       })
-        .then((response) => {
-          alert("Post added");
-          this.props.history.push("/admin/posts/home");
-          return response.data;
-        })
-        .catch(function (error) {
-          return error;
-        });
-    }
+      .catch(function (error) {
+        return error;
+      });
   };
 
   render() {
@@ -173,12 +173,12 @@ class MyEditor extends React.Component {
         <div className="bttn-wrap">
           <form className="author-id-form" onSubmit={this.addPost}>
             <div class="grp">
-              <label>Author Id </label>
+              <label>Auth code</label>
               <input
-                type="password"
-                value={this.state.authorId}
+                type="text"
+                value={this.state.authorCode}
                 onChange={(e) => {
-                  this.setState({ authorId: e.target.value });
+                  this.setState({ authorCode: e.target.value });
                 }}
               />
             </div>

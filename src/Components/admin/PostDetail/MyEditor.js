@@ -12,7 +12,7 @@ class MyEditor extends React.Component {
       title: this.props.title,
       desc: this.props.desc,
       editorState: EditorState.createEmpty(),
-      authorId: null,
+      authorCode: null,
     };
 
     this.focus = () => this.refs.editor.focus();
@@ -80,11 +80,9 @@ class MyEditor extends React.Component {
         desc: this.state.desc,
         content: this.refs.editor.editor.innerHTML,
         slug: slug,
+        authorCode:this.state.authorCode
     };
-    console.log("test")
-    if (this.state.authorId === "8958") {
       this.props.updatePost(payload);
-    }
   };
 
   render() {
@@ -154,9 +152,9 @@ class MyEditor extends React.Component {
               <label>Author Id </label>
               <input
                 type="password"
-                value={this.state.authorId}
+                value={this.state.authorCode}
                 onChange={(e) => {
-                  this.setState({ authorId: e.target.value });
+                  this.setState({ authorCode: e.target.value });
                 }}
               />
             </div>

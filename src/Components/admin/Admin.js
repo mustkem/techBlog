@@ -41,7 +41,7 @@ function Admin() {
                     <AddPostContainer />
                 </Route>
 
-                <Route exact path={`${path}/:slug`}>
+                <Route exact path={`${path}/:postId`}>
                     <PostDetail />
                 </Route>
                 

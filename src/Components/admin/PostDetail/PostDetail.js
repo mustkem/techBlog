@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router";
 
 import MyEditor from "./MyEditor";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 
 import Layout from "../Layout/Layout";
 
@@ -16,12 +16,14 @@ class PostDetail extends React.Component {
     this.state = {
       editPost: false,
       post: null,
+      authorCode: null,
+      showDeleteModel: false,
     };
   }
   componentDidMount() {
     axios({
       method: "get",
-      url: API_URL + "/admin/feed/post/" + this.props.match.params.slug,
+      url: API_URL + "/admin/feed/post/" + this.props.match.params.postId,
       headers: {
         "Content-Type": "application/json",
         Authorization:
@@ -42,7 +44,7 @@ class PostDetail extends React.Component {
   updatePost = (payload) => {
     axios({
       method: "put",
-      url: API_URL + "/admin/feed/post/" + this.props.match.params.slug,
+      url: API_URL + "/admin/feed/post/" + this.props.match.params.postId,
       headers: {
         "Content-Type": "application/json",
         Authorization:
@@ -66,17 +68,22 @@ class PostDetail extends React.Component {
   };
 
   deletePost = () => {
-    alert("Click ok to confirm");
     axios({
       method: "delete",
-      url: API_URL + "/admin/feed/post/" + this.props.match.params.slug,
+      url: API_URL + "/admin/feed/post/" + this.props.match.params.postId,
       headers: {
         "Content-Type": "application/json",
         Authorization:
           "Bearer " + localStorage.getItem("codemedium-token-admin"),
       },
+      data: {
+        authorCode: this.state.authorCode,
+      },
     })
       .then((response) => {
+        this.setState({
+          showDeleteModel: !this.state.showDeleteModel,
+        });
         alert("Deleted");
         this.props.history.push("/admin/posts/home");
         return response.data;
@@ -110,7 +117,15 @@ class PostDetail extends React.Component {
                     {!this.state.editPost && "Edit Post"}
                     {this.state.editPost && "View Post"}
                   </Button>
-                  <Button style={{marginLeft:10}} variant="danger" onClick={this.deletePost}>
+                  <Button
+                    style={{ marginLeft: 10 }}
+                    variant="danger"
+                    onClick={() => {
+                      this.setState({
+                        showDeleteModel: !this.state.showDeleteModel,
+                      });
+                    }}
+                  >
                     Delete Post
                   </Button>
                 </div>
@@ -146,6 +161,38 @@ class PostDetail extends React.Component {
             </div>
           </div>
         </div>
+
+        <Modal
+          show={this.state.showDeleteModel}
+          onHide={() => {
+            this.setState({
+              handleClose: !this.state.handleClose,
+            });
+          }}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Do you want to delete this post?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>{postItem.title}</p>
+            <div class="grp">
+            <p>Auth code</p>
+            <input
+              type="text"
+              value={this.state.authorCode}
+              onChange={(e) => {
+                this.setState({ authorCode: e.target.value });
+              }}
+            />
+          </div>
+          </Modal.Body>
+         
+          <Modal.Footer>
+            <Button variant="danger" onClick={this.deletePost}>
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Layout>
     );
   }
