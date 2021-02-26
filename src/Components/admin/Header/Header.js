@@ -7,7 +7,7 @@ export default (props) => {
       <div className="container" >
         <div className="header-content"  style={{display:"flex"}}>
         <div className="logo-wrp">
-          <Link to="/">
+          <Link to="/admin/posts/home">
           <img style={{minWidth:35}} className="logo" src="/images/logo.png" />
             <span style={{position:"relative", top:1, marginLeft:8}}>
             Code Medium

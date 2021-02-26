@@ -10,6 +10,8 @@ import { API_URL } from "../../../config";
 
 import { withRouter } from "react-router";
 
+import Select from "react-select";
+
 class MyEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,8 @@ class MyEditor extends React.Component {
       desc: this.props.desc,
       editorState: EditorState.createEmpty(),
       authorCode: null,
+      categories: [],
+      selectedCategories: null,
     };
 
     this.focus = () => this.refs.editor.focus();
@@ -40,7 +44,29 @@ class MyEditor extends React.Component {
     this.setState({
       editorState: editorState,
     });
+    this.getCategories();
   }
+
+  getCategories = () => {
+    axios({
+      method: "get",
+      url: API_URL + "/admin/common/categories",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + localStorage.getItem("codemedium-token-admin"),
+      },
+    })
+      .then((response) => {
+        this.setState({
+          categories: response.data.categories.map(item=>({...item, value:item._id})),
+        });
+        return response.data;
+      })
+      .catch(function (error) {
+        return error;
+      });
+  };
 
   _handleKeyCommand(command) {
     const { editorState } = this.state;
@@ -87,8 +113,9 @@ class MyEditor extends React.Component {
       creater: "6035c940ab2e02358fac6e6b",
       slug: slug,
       authorCode: this.state.authorCode,
+      categories:this.state.selectedCategories.map(item=>item.value)
     };
-    
+
     axios({
       method: "post",
       url: API_URL + "/admin/feed/post",
@@ -148,6 +175,20 @@ class MyEditor extends React.Component {
             }}
           />
         </div>
+        <div style={{ textAlign: "center", marginBottom: 15 }}>
+          <p>Select category</p>
+          <Select
+          isMulti
+            value={this.state.selectedCategories}
+            onChange={(selected) => {
+              this.setState({
+                selectedCategories: selected,
+              });
+            }}
+            options={this.state.categories}
+          />
+        </div>
+
         <div className="edittor-wrp RichEditor-root">
           <BlockStyleControls
             editorState={editorState}
