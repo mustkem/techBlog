@@ -1,10 +1,9 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { withRouter } from "react-router";
 import { path } from "ramda";
-import { IoLogoWhatsapp } from "react-icons/io";
-import { FaBeer, FaFacebook } from "react-icons/fa";
+import axios from "axios";
+import { API_URL } from "../../config";
 
 import {
   FacebookShareButton,
@@ -32,58 +31,46 @@ class PostPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editPost: false,
+      post: null,
     };
   }
+  
   componentDidMount() {
-    this.props.getPost(this.props.match.params);
-    let setTimeIntervalId = setInterval(() => {
-      if (window.post) {
-        clearInterval(setTimeIntervalId);
+    axios({
+      method: "get",
+      url: API_URL + "/feed/post/"+ this.props.match.params.slug,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + localStorage.getItem("codemedium-token-admin"),
+      },
+    })
+      .then((response) => {
         this.setState({
-          post: window.post,
+          post: response.data.post,
         });
-      }
-    }, 1000);
-    window.scroll(0, 0);
+        return response.data;
+      })
+      .catch(function (error) {
+        return error;
+      });
   }
 
-  onEditClick = () => {
-    this.setState({
-      editPost: !this.state.editPost,
-    });
-  };
-
   render() {
-    const postItem = path([0], window.post);
-    if (!postItem) {
-      return null;
-    }
+    const { post } = this.state;
+
     return (
       <Layout>
         <div className="post-page">
-        <AdvertBannerTop />
+          <AdvertBannerTop />
           <div className="container">
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={8}>
-                {/* <div className="bttn-wrap">
-                                <button onClick={this.onEditClick}>
-                                    {
-                                        !this.state.editPost &&
-                                        'Edit Post'
-                                    }
-                                    {
-                                        this.state.editPost &&
-                                        'View Post'
-                                    }
-                                </button>
-                            </div> */}
-
-                {!this.state.editPost && (
+            {this.state.post && (
+              <div className="row">
+                <div className="col-9">
                   <div className="post-wrap">
                     <div className="post RichEditor-editor">
                       <h1 className="title">
-                        <strong>{postItem.title}</strong>
+                        <strong>{post.title}</strong>
                       </h1>
                       <div
                         style={{
@@ -120,31 +107,16 @@ class PostPage extends React.Component {
                       </div>
                       <div
                         className="post-content"
-                        dangerouslySetInnerHTML={{ __html: postItem.content }}
+                        dangerouslySetInnerHTML={{ __html: post.content }}
                       ></div>
                     </div>
-                    {/* <Author /> */}
                   </div>
-                )}
-                {this.state.editPost && (
-                  <div>
-                    <MyEditor
-                      content={postItem.content}
-                      title={postItem.title}
-                      desc={postItem.desc}
-                      updatePost={this.props.updatePost}
-                      query={this.props.match.params}
-                      slug={postItem.slug}
-                      id={postItem.id}
-                      editPost={true}
-                    />
-                  </div>
-                )}
-              </Grid>
-              <Grid className="side-banner" item xs={0} sm={4}>
-                <SideBanner />
-              </Grid>
-            </Grid>
+                </div>
+                <div className="side-banner col-3">
+                  <SideBanner />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </Layout>
