@@ -66,7 +66,7 @@ class PostPage extends React.Component {
           <div className="container">
             {this.state.post && (
               <div className="row">
-                <div className="col-9">
+                <div className="col-md-9">
                   <div className="post-wrap">
                     <div className="post RichEditor-editor">
                       <h1 className="title">
@@ -112,7 +112,7 @@ class PostPage extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="side-banner col-3">
+                <div className="side-banner col-md-3" >
                   <SideBanner />
                 </div>
               </div>

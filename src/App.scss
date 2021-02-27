@@ -7,28 +7,14 @@
     font-family: 'Inter', sans-serif;
 }
 
+html, body, .layout, .app{
+  min-height: 100vh;
+}
+
 li{
   list-style: none;
 }
 
-@media only screen and (max-width: 767px) {
-  /* STYLES HERE for BROWSER WINDOWS with a max-width of 480px. 
-     This will work on desktops when the window is narrowed.  */
-  .banner-adv .post-image {
-    width: 100%;
-    height: auto;
-  }
-  .side-banner {
-    display: none;
-  }
-  .header .navbar-main li {
-    list-style: none;
-    padding: 12px;
-  }
-  .navbar-main li a {
-    font-size: 12px;
-  }
-}
 
 a {
   text-decoration: none !important;
@@ -105,9 +91,6 @@ a {
   }
 }
 }
-
-
-
 
 .advertisement {
   margin-bottom: 50px;
@@ -370,4 +353,78 @@ h4 {
 
 .share-icon-container button{
     margin-left: 10px;
+}
+
+
+@media only screen and (max-width: 767px) {
+  /* STYLES HERE for BROWSER WINDOWS with a max-width of 480px. 
+     This will work on desktops when the window is narrowed.  */
+  .banner-adv .post-image {
+    width: 100%;
+    height: auto;
+  }
+  .side-banner {
+    display: none;
+  }
+  .header .navbar-main li {
+    list-style: none;
+    padding: 0;
+  }
+  .navbar-main li a {
+    font-size: 12px;
+  }
+  .header .sub-title{
+    display: none;
+  }
+  .post-card .post-content {
+    flex-direction: column;
+  }
+  .post-card .post-content .sec-1{
+    width:auto !important;
+  }
+  .post-card .post-content .sec-2{
+    width:auto !important;
+  }
+  .post-card .sec-2 {
+    order:1;
+  }
+  .post-card .sec-1 {
+    order:2;
+  }
+  .post-card .post-content .sec-2 .figure-content{
+    margin-bottom: 15px !important;
+  }
+  .post-card{
+    margin-bottom: 0px !important;
+  }
+  .banner-adv{
+    margin-bottom: 0px;
+  }
+  .post-card .post-content .sec-1 h2{
+    font-size: 20px !important;
+  }
+  .post-card .post-content .sec-1 .desc{
+    font-size: 16px !important;
+  }
+
+  .post .title{
+    font-size: 20px ;
+  }
+  .post .post-content{
+    font-size: 16px;
+  }
+  
+}
+
+@media only screen and (max-width: 900px) {
+
+  .banner-adv{
+    a{
+      width: 100%;
+    }
+    img{
+      width: 100%;
+    }
+  }
+
 }

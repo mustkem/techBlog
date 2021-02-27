@@ -6,11 +6,13 @@ import Footer from '../Footer/Footer';
 
 export default (props)=>{
     return (
-        <div className="layout">
+        <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between"}} className="layout">
+            <div>
             <Header/>
             {
                 props.children
             }
+            </div>
             <Footer />
         </div>
     )
