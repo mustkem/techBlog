@@ -9,6 +9,7 @@ import { Button } from "react-bootstrap";
 import * as homeActions from "../../Store/Actions/actions";
 
 const Header = (props) => {
+  console.log("test")
   const hadlePageChange = (payload) => {
     const query = parse(props.location.search);
     query.category = payload.category;
