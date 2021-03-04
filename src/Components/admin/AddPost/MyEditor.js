@@ -59,7 +59,10 @@ class MyEditor extends React.Component {
     })
       .then((response) => {
         this.setState({
-          categories: response.data.categories.map(item=>({...item, value:item._id})),
+          categories: response.data.categories.map((item) => ({
+            ...item,
+            value: item._id,
+          })),
         });
         return response.data;
       })
@@ -106,25 +109,32 @@ class MyEditor extends React.Component {
       slug = this.props.slug;
     }
 
-    let payload = {
-      title: this.state.title,
-      desc: this.state.desc,
-      content: this.refs.editor.editor.innerHTML,
-      creater: "6035c940ab2e02358fac6e6b",
-      slug: slug,
-      authorCode: this.state.authorCode,
-      categories:this.state.selectedCategories.map(item=>item.value)
-    };
+
+    const formData = new FormData();
+    formData.append("title", this.state.title);
+    formData.append('image', this.state.image);
+    formData.append("content", this.refs.editor.editor.innerHTML);
+    formData.append("desc", this.state.desc);
+    formData.append("creator", "6035c940ab2e02358fac6e6b");
+    formData.append("slug", slug);
+    formData.append("authorCode", this.state.authorCode);
+    formData.append(
+      "categories",
+      this.state.selectedCategories.map((item) => item.value)
+    );
+
+    console.log(formData);
+
 
     axios({
       method: "post",
       url: API_URL + "/admin/feed/post",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'multipart/form-data',
         Authorization:
           "Bearer " + localStorage.getItem("codemedium-token-admin"),
       },
-      data: payload,
+      data: formData,
     })
       .then((response) => {
         alert("Post added");
@@ -134,6 +144,21 @@ class MyEditor extends React.Component {
       .catch(function (error) {
         return error;
       });
+  };
+
+  onFileChange = (value, files) => {
+    // if (files) {
+    //   generateBase64FromImage(files[0])
+    //     .then(b64 => {
+    //       this.setState({ imagePreview: b64 });
+    //     })
+    //     .catch(e => {
+    //       this.setState({ imagePreview: null });
+    //     });
+    // }
+    this.setState({
+      image: files ? files[0] : value
+    });
   };
 
   render() {
@@ -157,6 +182,13 @@ class MyEditor extends React.Component {
         <div style={{ textAlign: "center", marginBottom: 15 }}>
           <p>Title</p>
           <input
+            className=""
+            type="file"
+            onChange={(e) =>
+              this.onFileChange(e.target.value, e.target.files)
+            }
+          />
+          <input
             style={{ width: "50%" }}
             value={this.state.title}
             onChange={(e) => {
@@ -178,7 +210,7 @@ class MyEditor extends React.Component {
         <div style={{ textAlign: "center", marginBottom: 15 }}>
           <p>Select category</p>
           <Select
-          isMulti
+            isMulti
             value={this.state.selectedCategories}
             onChange={(selected) => {
               this.setState({

@@ -137,6 +137,15 @@ class PostDetail extends React.Component {
                         <strong>{postItem.title}</strong>
                       </h1>
                       <div
+                        className="detail-image"
+                      
+                      >
+                      <img
+                        src={API_URL + "/" + postItem.imageUrl}
+                      />
+                      </div>
+                     
+                      <div
                         className="post-content"
                         dangerouslySetInnerHTML={{ __html: postItem.content }}
                       ></div>
@@ -176,17 +185,17 @@ class PostDetail extends React.Component {
           <Modal.Body>
             <p>{postItem.title}</p>
             <div class="grp">
-            <p>Auth code</p>
-            <input
-              type="text"
-              value={this.state.authorCode}
-              onChange={(e) => {
-                this.setState({ authorCode: e.target.value });
-              }}
-            />
-          </div>
+              <p>Auth code</p>
+              <input
+                type="text"
+                value={this.state.authorCode}
+                onChange={(e) => {
+                  this.setState({ authorCode: e.target.value });
+                }}
+              />
+            </div>
           </Modal.Body>
-         
+
           <Modal.Footer>
             <Button variant="danger" onClick={this.deletePost}>
               Delete
