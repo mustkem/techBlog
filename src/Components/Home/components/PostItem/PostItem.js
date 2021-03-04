@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { API_URL } from '../../../../config'
+
 import "./style/index.scss";
 
 function PostItem(props) {
@@ -22,7 +24,7 @@ function PostItem(props) {
           </div>
           <div className="sec-2">
             <div className="figure-content">
-              <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1614007213032/5oqCMexP9.webp?w=600&fit=crop&crop=entropy&auto=compress" />
+              <img style={{height:"100%", width:"100%", objectFit:"cover"}} src={API_URL + "/" + item.imageUrl} />
             </div>
           </div>
         </div>

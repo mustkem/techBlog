@@ -136,15 +136,10 @@ class PostDetail extends React.Component {
                       <h1 className="title">
                         <strong>{postItem.title}</strong>
                       </h1>
-                      <div
-                        className="detail-image"
-                      
-                      >
-                      <img
-                        src={API_URL + "/" + postItem.imageUrl}
-                      />
+                      <div className="detail-image">
+                        <img src={API_URL + "/" + postItem.imageUrl} />
                       </div>
-                     
+
                       <div
                         className="post-content"
                         dangerouslySetInnerHTML={{ __html: postItem.content }}

@@ -12,7 +12,14 @@ const Header = (props) => {
   const hadlePageChange = (payload) => {
     const query = parse(props.location.search);
     query.category = payload.category;
-    props.history.push("/?" + stringify(query));
+    const newQuery ={};
+
+    Object.keys(query).forEach(key=>{
+      if(query[key]){
+        newQuery[key] = query[key]; 
+      }
+    })
+    props.history.push("/?" + stringify(newQuery));
     props.getPosts(query);
   };
 

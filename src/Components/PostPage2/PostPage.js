@@ -72,6 +72,7 @@ class PostPage extends React.Component {
                       <h1 className="title">
                         <strong>{post.title}</strong>
                       </h1>
+                     
                       <div
                         style={{
                           display: "flex",
@@ -104,6 +105,10 @@ class PostPage extends React.Component {
                             <WorkplaceIcon size={32} round={true} />
                           </WorkplaceShareButton>
                         </div>
+                       
+                      </div>
+                      <div className="detail-image">
+                        <img src={API_URL + "/" + post.imageUrl} />
                       </div>
                       <div
                         className="post-content"
