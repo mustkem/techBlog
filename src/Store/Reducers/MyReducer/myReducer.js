@@ -9,9 +9,10 @@ export default function myReducer(state = initialState, action) {
                 ...action
             };
         case actionTypes.GET_POSTS:
+            // console.log("test", )
             return {
                 ...state,
-                posts: action.payload
+                ...action.payload
             };
             break;
 

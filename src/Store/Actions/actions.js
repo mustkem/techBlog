@@ -1,10 +1,9 @@
 import { actionTypes } from "../ActionsTypes/actionTypes";
-import axios from 'axios';
+import axios from "axios";
 import { API_URL } from "../../config";
 
 export const addPost = (payload) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-
     // axios({
     //   method: "post",
     //   url: API_URL + "/admin/feed/post",
@@ -20,35 +19,31 @@ export const addPost = (payload) => {
     //   .catch(function (error) {
     //     return error;
     //   });
-
   };
 };
 
 export const getAdminPosts = (payload) => {
-    return (dispatch, getState, { getFirebase, getFirestore }) => {
-  
-        axios({
-            method: "get",
-            url: API_URL + "/admin/feed/post",
-            headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("codemedium-token-admin"),
-            },
-            params:{
-                user:"test"
-            }
-        })
-            .then(function (response) {
-                return response.data;
-            })
-            .catch(function (error) {
-            return error;
-            });
-  
-    };
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    axios({
+      method: "get",
+      url: API_URL + "/admin/feed/post",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + localStorage.getItem("codemedium-token-admin"),
+      },
+      params: {
+        user: "test",
+      },
+    })
+      .then(function (response) {
+        return response.data;
+      })
+      .catch(function (error) {
+        return error;
+      });
   };
-
-  
+};
 
 // const fireStore = getFirestore();
 // fireStore.collection('posts').add(
@@ -86,19 +81,19 @@ export const getPosts = (payload) => {
 
 export const getPosts2 = (payload) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
+    dispatch(onGetPosts({ loading: true }));
     return axios({
       method: "get",
       url: API_URL + "/feed/posts",
-      params:payload
+      params: payload,
     })
       .then(function (response) {
-        dispatch(onGetPosts(response.data.posts));
+        dispatch(onGetPosts({ loading: false, posts: response.data.posts }));
         return response.data;
       })
       .catch(function (error) {
         console.log(error);
       });
-
   };
 };
 
@@ -126,7 +121,7 @@ export const getPost2 = (payload) => {
     return axios({
       method: "get",
       url: API_URL + "/feed/post",
-      params:payload
+      params: payload,
     })
       .then(function (response) {
         dispatch(onGetPosts(response.data.posts));
@@ -135,7 +130,6 @@ export const getPost2 = (payload) => {
       .catch(function (error) {
         console.log(error);
       });
-
   };
 };
 
@@ -166,8 +160,7 @@ export const updatePost = (payload) => {
 
 export const login = (payload) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-
-   return axios({
+    return axios({
       method: "post",
       url: API_URL + "/admin/auth/login",
       data: payload,
@@ -180,15 +173,12 @@ export const login = (payload) => {
       .catch(function (error) {
         console.log(error);
       });
-
   };
 };
-
 
 export function loginAction(payload) {
   return {
     type: actionTypes.LOGIN_SUCCESS,
-    payload
-  }
+    payload,
+  };
 }
-

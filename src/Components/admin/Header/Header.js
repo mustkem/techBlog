@@ -40,6 +40,15 @@ export default (props) => {
                   Add Post
                 </Link>
               </li>
+              <li>
+                <Link
+                  style={{ color: "black", background: "white" }}
+                  className=""
+                  to="/admin/add/post2"
+                >
+                  Add Post 2
+                </Link>
+              </li>
               {/* <li>
             <a className="javascript" href="/">Javascript</a>
           </li> */}

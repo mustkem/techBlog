@@ -19,6 +19,8 @@ import AddPostContainer from "../../Containers/AddPostContainer/AddPostContainer
 import AdminPosts from "./Home/Home";
 import LoginAdmin from "./Login";
 import PostDetail from "./PostDetail/PostDetail";
+import Test from "./Test";
+
 
 function Admin(props) {
   let { path, url } = useRouteMatch();
@@ -58,6 +60,8 @@ function Admin(props) {
       </Switch>
       {/* {isValid && ( */}
         <Switch>
+        <Route exact path={`${path}/add/post2`} component={Test} />
+
           <Route exact path={`${path}/posts/home`}>
             <AdminPosts />
           </Route>
@@ -68,6 +72,8 @@ function Admin(props) {
           <Route exact path={`${path}/:postId`}>
             <PostDetail />
           </Route>
+
+
         </Switch>
       {/* )} */}
     </div>
