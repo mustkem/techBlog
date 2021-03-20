@@ -7,6 +7,7 @@
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "@tinymce/tinymce-react": "^3.10.4",
     "axios": "^0.19.2",
     "bootstrap": "^4.6.0",
     "draft-js-import-html": "^1.4.1",
@@ -14,6 +15,7 @@
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
     "node-sass": "^4.14.1",
+    "prismjs": "^1.23.0",
     "query-string": "^6.14.1",
     "ramda": "^0.26.1",
     "react": "^16.9.0",
@@ -29,6 +31,7 @@
     "react-scripts": "3.1.1",
     "react-select": "^4.1.0",
     "react-share": "^4.3.1",
+    "reactstrap": "^8.9.0",
     "recharts": "^1.8.5",
     "redux": "^4.0.4",
     "redux-firestore": "^0.8.0",

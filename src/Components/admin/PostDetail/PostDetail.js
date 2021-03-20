@@ -1,12 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router";
 
-import MyEditor from "./MyEditor";
+import axios from "axios";
+import Prism from "prismjs"
+
 import { Button, Modal } from "react-bootstrap";
 
 import Layout from "../Layout/Layout";
-
-import axios from "axios";
 
 import { API_URL } from "../../../config";
 
@@ -33,12 +33,15 @@ class PostDetail extends React.Component {
       .then((response) => {
         this.setState({
           post: response.data.post,
+        },()=>{
+          setTimeout(() => Prism.highlightAll(), 0)
         });
         return response.data;
       })
       .catch(function (error) {
         return error;
       });
+
   }
 
   updatePost = (payload) => {
@@ -139,15 +142,12 @@ class PostDetail extends React.Component {
                       <div className="detail-image">
                         <img src={API_URL + "/" + postItem.imageUrl} />
                       </div>
-
-                      <div
-                        className="post-content"
-                        dangerouslySetInnerHTML={{ __html: postItem.content }}
-                      ></div>
+                      <div dangerouslySetInnerHTML={{__html: postItem.content}}>
+                        </div>
                     </div>
                   </div>
                 )}
-                {this.state.editPost && (
+                {/* {this.state.editPost && (
                   <div>
                     <MyEditor
                       content={postItem.content}
@@ -160,7 +160,7 @@ class PostDetail extends React.Component {
                       editPost={true}
                     />
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </div>

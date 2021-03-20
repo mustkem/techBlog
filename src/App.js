@@ -3,6 +3,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "draft-js/dist/Draft.css";
 import "./App.scss";
+import "./css/prism.css";
+
 
 import { Provider } from "react-redux";
 import store from "./Store/store";

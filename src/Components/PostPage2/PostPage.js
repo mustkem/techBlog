@@ -3,6 +3,9 @@ import Grid from "@material-ui/core/Grid";
 import { withRouter } from "react-router";
 import { path } from "ramda";
 import axios from "axios";
+import Prism from "prismjs"
+
+
 import { API_URL } from "../../config";
 
 import {
@@ -48,6 +51,8 @@ class PostPage extends React.Component {
       .then((response) => {
         this.setState({
           post: response.data.post,
+        },()=>{
+          setTimeout(() => Prism.highlightAll(), 0)
         });
         return response.data;
       })

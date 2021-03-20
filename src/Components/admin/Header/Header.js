@@ -14,7 +14,7 @@ export default (props) => {
 
 
   return (
-    <div style={{ marginBottom: 50 }} className="header top">
+    <div style={{ marginBottom: 50 }} className="header top admin-header">
       <div className="container">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div className="header-content" style={{ display: "flex" }}>
@@ -33,7 +33,6 @@ export default (props) => {
             <ul className="navbar-main">
               <li>
                 <Link
-                  style={{ color: "black", background: "white" }}
                   className=""
                   to="/admin/add/post"
                 >
@@ -42,7 +41,6 @@ export default (props) => {
               </li>
               <li>
                 <Link
-                  style={{ color: "black", background: "white" }}
                   className=""
                   to="/admin/add/post2"
                 >

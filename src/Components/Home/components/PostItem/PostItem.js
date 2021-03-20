@@ -24,7 +24,7 @@ function PostItem(props) {
           </div>
           <div className="sec-2">
             <div className="figure-content">
-              <img style={{height:"100%", width:"100%", objectFit:"cover"}} src={API_URL + "/" + item.imageUrl} />
+              <img style={{height:"100%", width:"100%", objectFit:"contain"}} src={API_URL + "/" + item.imageUrl} />
             </div>
           </div>
         </div>
