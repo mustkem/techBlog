@@ -61,6 +61,8 @@ class PostPage extends React.Component {
       });
   }
 
+  
+
   render() {
     const { post } = this.state;
 
