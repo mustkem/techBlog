@@ -65,6 +65,7 @@ class PostPage extends React.Component {
   render() {
     const { post } = this.state;
 
+
     return (
       <Layout>
         <div className="post-page">
@@ -77,7 +78,7 @@ class PostPage extends React.Component {
                     <div className="post RichEditor-editor">
                       <Helmet>
                         <title>{post.title}</title>
-                        <meta name="Description" content={post.desc}  />
+                        <meta name="Description" content={post.desc} />
                       </Helmet>
                       <h1 className="title">
                         <strong>{post.title}</strong>
@@ -91,7 +92,7 @@ class PostPage extends React.Component {
                         }}
                       >
                         <div className="share-icon-container">
-                          <WhatsappShareButton>
+                          {/* <WhatsappShareButton>
                             <WhatsappIcon size={32} round={true} />
                           </WhatsappShareButton>
 
@@ -113,7 +114,28 @@ class PostPage extends React.Component {
 
                           <WorkplaceShareButton>
                             <WorkplaceIcon size={32} round={true} />
-                          </WorkplaceShareButton>
+                          </WorkplaceShareButton> */}
+                          <FacebookShareButton
+                            url={window.location.href}
+                            quote={post.title}
+                            hashtag="#camperstribe"
+                          >
+                            <FacebookIcon size={36} round={true} />
+                          </FacebookShareButton>
+                          <TwitterShareButton
+                            url={window.location.href}
+                            title={post.title}
+                            hashtag="#camperstribe"
+                          >
+                            <TwitterIcon size={36} round={true} />
+                          </TwitterShareButton>
+                          <WhatsappShareButton
+                            url={window.location.href}
+                            title={post.title}
+                            separator=":: "
+                          >
+                            <WhatsappIcon size={36} round={true} />
+                          </WhatsappShareButton>
                         </div>
                       </div>
                       {/* <div className="detail-image">
