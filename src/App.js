@@ -11,13 +11,7 @@ import store from "./Store/store";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import HomeContainer from "./Containers/HomeContainer/HomeContainer";
-import AddPostContainer from "./Containers/AddPostContainer/AddPostContainer";
-import PostsContainer from "./Containers/PostsContainer/PostsContainer";
 import PostDetail from "./Containers/PostDetail/PostDetail";
-
-import AdminPosts from "./Components/admin/Home/Home";
-
-import LoginAdmin from "./Components/admin/Login";
 
 import Admin from "./Components/admin/Admin";
 
