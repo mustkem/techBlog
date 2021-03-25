@@ -41,7 +41,7 @@ const Header = (props) => {
                 src="/images/logo.png"
               />
               <span className="sub-title" style={{ position: "relative", top: 1, marginLeft: 8 }}>
-                Code Medium
+              Tutorial Medium
               </span>
             </div>
           </div>

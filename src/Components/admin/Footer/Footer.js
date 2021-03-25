@@ -6,10 +6,10 @@ export default (props) => {
       <div className="container" >
         <div className="header-content"  style={{display:"flex"}}>
         <div className="logo-wrp" >
-          Copyright Code Medium
+          Copyright www.tutorialmedium.com
         </div>
         <div className="logo-wrp" style={{marginLeft:15}}>
-          Contact Us on codemedium@contact.com
+          Contact Us on contact@tutorialmedium.com
         </div>
         {/* <ul className="navbar-main">
           <li>

@@ -26,7 +26,7 @@ export default (props) => {
                   src="/images/logo.png"
                 />
                 <span style={{ position: "relative", top: 1, marginLeft: 8 }}>
-                  Code Medium
+                Tutorial Medium
                 </span>
               </Link>
             </div>
