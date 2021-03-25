@@ -8,7 +8,7 @@
   "dependencies": {
     "@babel/runtime": "^7.5.5",
     "@tinymce/tinymce-react": "^3.10.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "draft-js-import-html": "^1.4.1",
     "draftjs-to-html": "^0.8.4",
