@@ -8,24 +8,20 @@ import {
 } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-
 import axios from "axios";
 import { connect } from "react-redux";
 
 import { API_URL } from "../../config";
 import { loginAction } from "../../Store/Actions/actions";
 
-import AddPostContainer from "../../Containers/AddPostContainer/AddPostContainer";
 import AdminPosts from "./Home/Home";
 import LoginAdmin from "./Login";
 import PostDetail from "./PostDetail/PostDetail";
 import CreatePost from "./CreatePost";
 
-
 function Admin(props) {
   let { path, url } = useRouteMatch();
   const history = useHistory();
-
 
   const [isValid, setIsValid] = React.useState(true);
 
@@ -59,22 +55,15 @@ function Admin(props) {
         </Route>
       </Switch>
       {/* {isValid && ( */}
-        <Switch>
-        <Route exact path={`${path}/add/post2`} component={CreatePost} />
-
-          <Route exact path={`${path}/posts/home`}>
-            <AdminPosts />
-          </Route>
-          <Route exact path={`${path}/add/post`}>
-            <AddPostContainer />
-          </Route>
-
-          <Route exact path={`${path}/:postId`}>
-            <PostDetail />
-          </Route>
-
-
-        </Switch>
+      <Switch>
+        <Route exact path={`${path}/add/post`} component={CreatePost} />
+        <Route exact path={`${path}/posts/home`}>
+          <AdminPosts />
+        </Route>
+        <Route exact path={`${path}/:postId`}>
+          <PostDetail />
+        </Route>
+      </Switch>
       {/* )} */}
     </div>
   );
