@@ -5,6 +5,7 @@ import { path } from "ramda";
 import { parse } from "query-string";
 import { withRouter } from "react-router-dom";
 import ContentLoader, { Facebook } from "react-content-loader";
+import { Helmet } from "react-helmet";
 
 import SideBanner from "../Layout/SideBanner/SideBanner";
 
@@ -26,24 +27,32 @@ class Home extends React.Component {
   render() {
     return (
       <Layout>
+        <Helmet>
+          <meta
+            name="Description"
+            content={
+              "Learn Javascript, React, Best Practice Javascript, Best Practice React"
+            }
+          />
+        </Helmet>
         <div className="home">
           <AdvertBannerTop />
           <div className="container">
             <div className="row">
               <div className="col-8">
                 <ul className="posts post-list">
-                    {
-                        this.props.loading && [1,1].map(item=>{
-                            return(
-                                <li className="post-card">
-                                <div style={{padding:15}}>
-                                  <MyLoader />
-                                </div>
-                            </li>
-                            )
-                        })
-                    }
-                  {!this.props.loading && this.props.posts &&
+                  {this.props.loading &&
+                    [1, 1].map((item) => {
+                      return (
+                        <li className="post-card">
+                          <div style={{ padding: 15 }}>
+                            <MyLoader />
+                          </div>
+                        </li>
+                      );
+                    })}
+                  {!this.props.loading &&
+                    this.props.posts &&
                     this.props.posts.map((item, index) => {
                       return <PostItem item={item} key={index} />;
                     })}
@@ -75,6 +84,5 @@ const MyLoader = () => (
     <rect x="0" y="5" rx="4" ry="4" width="220" height="13" />
     <rect x="0" y="25" rx="3" ry="3" width="220" height="15" />
     <rect x="170" y="60" rx="3" ry="3" width="50" height="8" />
-
   </ContentLoader>
 );

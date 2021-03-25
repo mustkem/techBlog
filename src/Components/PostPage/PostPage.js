@@ -1,10 +1,8 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
 import { withRouter } from "react-router";
-import { path } from "ramda";
 import axios from "axios";
-import Prism from "prismjs"
-
+import Prism from "prismjs";
+import { Helmet } from "react-helmet";
 
 import { API_URL } from "../../config";
 
@@ -35,11 +33,11 @@ class PostPage extends React.Component {
       post: null,
     };
   }
-  
+
   componentDidMount() {
     axios({
       method: "get",
-      url: API_URL + "/feed/post/"+ this.props.match.params.slug,
+      url: API_URL + "/feed/post/" + this.props.match.params.slug,
       headers: {
         "Content-Type": "application/json",
         Authorization:
@@ -47,14 +45,16 @@ class PostPage extends React.Component {
       },
     })
       .then((response) => {
-        this.setState({
-          post: response.data.post,
-        },()=>{
-          setTimeout(() => Prism.highlightAll(), 0)
-          setTimeout(() => Prism.highlightAll(), 50)
-          setTimeout(() => Prism.highlightAll(), 150)
-
-        });
+        this.setState(
+          {
+            post: response.data.post,
+          },
+          () => {
+            setTimeout(() => Prism.highlightAll(), 0);
+            setTimeout(() => Prism.highlightAll(), 50);
+            setTimeout(() => Prism.highlightAll(), 150);
+          }
+        );
         return response.data;
       })
       .catch(function (error) {
@@ -75,10 +75,14 @@ class PostPage extends React.Component {
                 <div className="col-md-9">
                   <div className="post-wrap">
                     <div className="post RichEditor-editor">
+                      <Helmet>
+                        <title>{post.title}</title>
+                        <meta name="Description" content={post.desc}  />
+                      </Helmet>
                       <h1 className="title">
                         <strong>{post.title}</strong>
                       </h1>
-                     
+
                       <div
                         style={{
                           display: "flex",
@@ -111,7 +115,6 @@ class PostPage extends React.Component {
                             <WorkplaceIcon size={32} round={true} />
                           </WorkplaceShareButton>
                         </div>
-                       
                       </div>
                       {/* <div className="detail-image">
                         <img src={API_URL + "/" + post.imageUrl} />
@@ -123,7 +126,7 @@ class PostPage extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="side-banner col-md-3" >
+                <div className="side-banner col-md-3">
                   <SideBanner />
                 </div>
               </div>
