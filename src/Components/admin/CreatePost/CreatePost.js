@@ -2,35 +2,29 @@ import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-
-
 import axios from "axios";
 import { API_URL } from "../../../config";
-
 
 import Select from "react-select";
 
 import Preview from "./Preview";
 
-
 class CreatePost extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: ``,
-      isPreview: false,
+      content: this.props.content,
       title: this.props.title,
       desc: this.props.desc,
-
       authorCode: null,
       categories: [],
-      selectedCategories: null,
+      selectedCategories: this.props.selectedCategories || [],
+      isPreview: false,
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getCategories();
-
   }
 
   getCategories = () => {
@@ -80,10 +74,9 @@ class CreatePost extends React.Component {
       slug = this.props.slug;
     }
 
-
     const formData = new FormData();
     formData.append("title", this.state.title);
-    formData.append('image', this.state.image);
+    formData.append("image", this.state.image);
     formData.append("content", this.state.content);
     formData.append("desc", this.state.desc);
     formData.append("creator", "6035c940ab2e02358fac6e6b");
@@ -96,12 +89,11 @@ class CreatePost extends React.Component {
 
     console.log(formData);
 
-
     axios({
       method: "post",
       url: API_URL + "/admin/feed/post",
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
         Authorization:
           "Bearer " + localStorage.getItem("codemedium-token-admin"),
       },
@@ -115,7 +107,53 @@ class CreatePost extends React.Component {
       .catch(function (error) {
         return error;
       });
+  };
+
+  handleUpdatePost = (e) => {
+    console.log("content", this.state.content);
+
+    e.preventDefault();
+    let slug = this.state.title.replace(/\s/g, "-");
+    if (this.props.slug) {
+      slug = this.props.slug;
+    }
+
+    const formData = new FormData();
+    formData.append("title", this.state.title);
+    if(this.state.image){
+      formData.append("image", this.state.image);
+    }
+    formData.append("content", this.state.content);
+    formData.append("desc", this.state.desc);
+    formData.append("creator", "6035c940ab2e02358fac6e6b");
+    formData.append("slug", slug);
+    formData.append("authorCode", this.state.authorCode);
+    formData.append(
+      "categories",
+      this.state.selectedCategories.map((item) => item.value)
+    );
+
+    console.log(formData);
     
+
+    axios({
+      method: "put",
+      url: API_URL + "/admin/feed/post/" + this.props.postId,
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization:
+          "Bearer " + localStorage.getItem("codemedium-token-admin"),
+      },
+      data: formData,
+    })
+      .then((response) => {
+        alert("Post updated");
+        this.props.history.push("/admin/posts/home");
+        return response.data;
+      })
+      .catch(function (error) {
+        return error;
+      });
   };
 
   onFileChange = (value, files) => {
@@ -129,7 +167,7 @@ class CreatePost extends React.Component {
     //     });
     // }
     this.setState({
-      image: files ? files[0] : value
+      image: files ? files[0] : value,
     });
   };
 
@@ -142,8 +180,8 @@ class CreatePost extends React.Component {
 
   render() {
     return (
-      <div style={{padding:"25px"}}>
-          <div className="action-wrap">
+      <div style={{ padding: "25px" }}>
+        <div className="action-wrap">
           <Button
             onClick={() => {
               this.setState({ isPreview: true });
@@ -152,7 +190,7 @@ class CreatePost extends React.Component {
             Preview
           </Button>
         </div>
-        <div style={{textAlign:"center"}}>
+        <div style={{ textAlign: "center" }}>
           <p>Write Post</p>
         </div>
         <div style={{ textAlign: "center", marginBottom: 15 }}>
@@ -171,9 +209,7 @@ class CreatePost extends React.Component {
           <input
             className=""
             type="file"
-            onChange={(e) =>
-              this.onFileChange(e.target.value, e.target.files)
-            }
+            onChange={(e) => this.onFileChange(e.target.value, e.target.files)}
           />
         </div>
         <div style={{ textAlign: "center", marginBottom: 15 }}>
@@ -237,23 +273,44 @@ class CreatePost extends React.Component {
               />
             </div>
             {!this.props.editPost && <Button type="submit">Publish</Button>}
-            {this.props.editPost && <Button type="submit"> Update </Button>}
+            {this.props.editPost && (
+              <Button onClick={this.handleUpdatePost} type="button">
+                {" "}
+                Update{" "}
+              </Button>
+            )}
           </form>
         </div>
-      
 
-        <Modal dialogClassName="preview-modal" isOpen={this.state.isPreview} toggle={()=>{this.setState({isPreview:!this.state.isPreview})}} >
-          <ModalHeader toggle={()=>{this.setState({isPreview:!this.state.isPreview})}}>Preview</ModalHeader>
+        <Modal
+          dialogClassName="preview-modal"
+          isOpen={this.state.isPreview}
+          toggle={() => {
+            this.setState({ isPreview: !this.state.isPreview });
+          }}
+        >
+          <ModalHeader
+            toggle={() => {
+              this.setState({ isPreview: !this.state.isPreview });
+            }}
+          >
+            Preview
+          </ModalHeader>
           <ModalBody>
-          <Preview
-            updateMainState={this.updateMainState}
-            content={this.state.content}
-          />
+            <Preview
+              updateMainState={this.updateMainState}
+              content={this.state.content}
+            />
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={()=>{this.setState({
-              isPreview:false
-            })}}>
+            <Button
+              color="secondary"
+              onClick={() => {
+                this.setState({
+                  isPreview: false,
+                });
+              }}
+            >
               Cancel
             </Button>
           </ModalFooter>

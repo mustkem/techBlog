@@ -2,13 +2,14 @@ import React from "react";
 import { withRouter } from "react-router";
 
 import axios from "axios";
-import Prism from "prismjs"
+import Prism from "prismjs";
 
 import { Button, Modal } from "react-bootstrap";
 
 import Layout from "../Layout/Layout";
 
 import { API_URL } from "../../../config";
+import UpdatePost from "../CreatePost";
 
 class PostDetail extends React.Component {
   constructor(props) {
@@ -31,44 +32,20 @@ class PostDetail extends React.Component {
       },
     })
       .then((response) => {
-        this.setState({
-          post: response.data.post,
-        },()=>{
-          setTimeout(() => Prism.highlightAll(), 0)
-        });
+        this.setState(
+          {
+            post: response.data.post,
+          },
+          () => {
+            setTimeout(() => Prism.highlightAll(), 0);
+          }
+        );
         return response.data;
       })
       .catch(function (error) {
         return error;
       });
-
   }
-
-  updatePost = (payload) => {
-    axios({
-      method: "put",
-      url: API_URL + "/admin/feed/post/" + this.props.match.params.postId,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization:
-          "Bearer " + localStorage.getItem("codemedium-token-admin"),
-      },
-      data: payload,
-    })
-      .then((response) => {
-        this.setState({
-          post: response.data.post,
-        });
-        alert("Updated");
-        this.props.history.push("/admin/posts/home");
-        return response.data;
-      })
-      .catch(function (error) {
-        alert("Error");
-
-        return error;
-      });
-  };
 
   deletePost = () => {
     axios({
@@ -139,28 +116,33 @@ class PostDetail extends React.Component {
                       <h1 className="title">
                         <strong>{postItem.title}</strong>
                       </h1>
-                      <div className="detail-image">
+                      {/* <div className="detail-image">
                         <img src={API_URL + "/" + postItem.imageUrl} />
-                      </div>
-                      <div dangerouslySetInnerHTML={{__html: postItem.content}}>
-                        </div>
+                      </div> */}
+                      <div
+                        dangerouslySetInnerHTML={{ __html: postItem.content }}
+                      ></div>
                     </div>
                   </div>
                 )}
-                {/* {this.state.editPost && (
-                  <div>
-                    <MyEditor
+                {this.state.editPost && (
+                  <div className="post-wrap">
+                    <UpdatePost
+                      editPost={true}
                       content={postItem.content}
                       title={postItem.title}
                       desc={postItem.desc}
-                      updatePost={this.updatePost}
-                      query={this.props.match.params}
-                      slug={postItem.slug}
-                      id={postItem.id}
-                      editPost={true}
+                      selectedCategories={
+                        postItem.categories &&
+                        postItem.categories.map((item) => ({
+                          ...item,
+                          value: item._id,
+                        }))
+                      }
+                      postId={postItem._id}
                     />
                   </div>
-                )} */}
+                )}
               </div>
             </div>
           </div>
