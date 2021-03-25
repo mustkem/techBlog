@@ -53,6 +53,9 @@ class PostPage extends React.Component {
           post: response.data.post,
         },()=>{
           setTimeout(() => Prism.highlightAll(), 0)
+          setTimeout(() => Prism.highlightAll(), 50)
+          setTimeout(() => Prism.highlightAll(), 150)
+
         });
         return response.data;
       })

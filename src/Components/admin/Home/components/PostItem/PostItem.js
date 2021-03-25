@@ -24,7 +24,7 @@ function PostItem(props) {
           </div>
           <div className="sec-2">
             <div className="figure-content">
-              <img src={API_URL + "/"+item.imageUrl} />
+              <img src={"data:image/png;base64,"+item.bolbImageUrl} />
             </div>
           </div>
         </div>
