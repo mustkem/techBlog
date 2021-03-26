@@ -1,6 +1,7 @@
 import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { connect } from "react-redux";
 
 import axios from "axios";
 import { API_URL } from "../../../config";
@@ -79,12 +80,12 @@ class CreatePost extends React.Component {
     formData.append("image", this.state.image);
     formData.append("content", this.state.content);
     formData.append("desc", this.state.desc);
-    formData.append("creator", "6035c940ab2e02358fac6e6b");
+    formData.append("creator", this.props.user.userId);
     formData.append("slug", slug);
     formData.append("authorCode", this.state.authorCode);
     formData.append(
       "categories",
-      this.state.selectedCategories.map((item) => item.value)
+      JSON.stringify(this.state.selectedCategories.map((item) => item.value))
     );
 
     console.log(formData);
@@ -120,21 +121,20 @@ class CreatePost extends React.Component {
 
     const formData = new FormData();
     formData.append("title", this.state.title);
-    if(this.state.image){
+    if (this.state.image) {
       formData.append("image", this.state.image);
     }
     formData.append("content", this.state.content);
     formData.append("desc", this.state.desc);
-    formData.append("creator", "6035c940ab2e02358fac6e6b");
+    formData.append("creator", this.props.user.userId);
     formData.append("slug", slug);
     formData.append("authorCode", this.state.authorCode);
     formData.append(
       "categories",
-      this.state.selectedCategories.map((item) => item.value)
+      JSON.stringify(this.state.selectedCategories.map((item) => item.value))
     );
 
     console.log(formData);
-    
 
     axios({
       method: "put",
@@ -320,4 +320,10 @@ class CreatePost extends React.Component {
   }
 }
 
-export default CreatePost;
+const mapStateToProps = (state) => {
+  return {
+    user: state.profileReducer.user,
+  };
+};
+
+export default connect(mapStateToProps)(CreatePost);

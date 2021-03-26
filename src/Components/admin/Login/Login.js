@@ -24,11 +24,7 @@ function Login(props) {
     e.preventDefault();
 
     props
-      .login(formDataLogin)
-      .then((res) => {
-        history.push("/admin/posts/home");
-      })
-      .catch((err) => {});
+      .login(formDataLogin, history)
   };
 
   return (
@@ -75,7 +71,7 @@ function Login(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (payload) => dispatch(login(payload)),
+    login: (payload, history) => dispatch(login(payload, history)),
   };
 };
 

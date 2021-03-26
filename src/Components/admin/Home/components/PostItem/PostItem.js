@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { API_URL } from '../../../../../config'
 
 import "./style/index.scss";
 
@@ -16,15 +15,29 @@ function PostItem(props) {
               <h2>{item.title}</h2>
               <div className="desc">{item.desc}</div>
             </div>
-            <div className="category-sec">
-              {item.categories.map((item) => {
-                return <div className="category"> {item.label} </div>;
-              })}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontSize: 11,
+                marginTop:5
+              }}
+            >
+              <div>
+                <div>Written by</div>
+                <div>{props.user.name}</div>
+              </div>
+
+              <div className="category-sec">
+                {item.categories.map((item) => {
+                  return <div className="category"> {item.label} </div>;
+                })}
+              </div>
             </div>
           </div>
           <div className="sec-2">
             <div className="figure-content">
-              <img src={"data:image/png;base64,"+item.bolbImageUrl} />
+              <img src={"data:image/png;base64," + item.bolbImageUrl} />
             </div>
           </div>
         </div>

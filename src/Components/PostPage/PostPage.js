@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import axios from "axios";
 import Prism from "prismjs";
 import { Helmet } from "react-helmet";
+import ContentLoader, { Facebook } from "react-content-loader";
 
 import { API_URL } from "../../config";
 
@@ -31,10 +32,14 @@ class PostPage extends React.Component {
     super(props);
     this.state = {
       post: null,
+      loading: false,
     };
   }
 
   componentDidMount() {
+    this.setState({
+      loading: true,
+    });
     axios({
       method: "get",
       url: API_URL + "/feed/post/" + this.props.match.params.slug,
@@ -48,6 +53,7 @@ class PostPage extends React.Component {
         this.setState(
           {
             post: response.data.post,
+            loading: false,
           },
           () => {
             setTimeout(() => Prism.highlightAll(), 0);
@@ -65,16 +71,23 @@ class PostPage extends React.Component {
   render() {
     const { post } = this.state;
 
+    console.log("test11", this.state.loading);
 
     return (
       <Layout>
         <div className="post-page">
           <AdvertBannerTop />
           <div className="container">
-            {this.state.post && (
-              <div className="row">
-                <div className="col-md-9">
-                  <div className="post-wrap">
+            <div className="row">
+              <div className="col-md-9">
+                <div className="post-wrap">
+                  {this.state.loading && (
+                  <div style={{ marginTop: 20 }}>
+                    <MyLoader />
+                  </div>
+                  )}
+
+                  {this.state.post && (
                     <div className="post RichEditor-editor">
                       <Helmet>
                         <title>{post.title}</title>
@@ -146,13 +159,13 @@ class PostPage extends React.Component {
                         dangerouslySetInnerHTML={{ __html: post.content }}
                       ></div>
                     </div>
-                  </div>
-                </div>
-                <div className="side-banner col-md-3">
-                  <SideBanner />
+                  )}
                 </div>
               </div>
-            )}
+              <div className="side-banner col-md-3">
+                <SideBanner />
+              </div>
+            </div>
           </div>
         </div>
       </Layout>
@@ -161,3 +174,14 @@ class PostPage extends React.Component {
 }
 
 export default withRouter(PostPage);
+
+const MyLoader = () => (
+  <ContentLoader viewBox="0 0 380 70">
+    {/* Only SVG shapes */}
+    <rect x="0" y="0" rx="4" ry="4" width="100%" height="13" />
+    <rect x="0" y="30" rx="5" ry="5" width="100%" height="200" />
+
+    {/* <rect x="0" y="25" rx="3" ry="3" width="220" height="15" />
+    <rect x="170" y="60" rx="3" ry="3" width="50" height="8" /> */}
+  </ContentLoader>
+);

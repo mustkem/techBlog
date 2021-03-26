@@ -158,7 +158,7 @@ export const updatePost = (payload) => {
   };
 };
 
-export const login = (payload) => {
+export const login = (payload, history) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     return axios({
       method: "post",
@@ -168,10 +168,12 @@ export const login = (payload) => {
       .then(function (response) {
         localStorage.setItem("codemedium-token-admin", response.data.token);
         dispatch(loginAction(response.data.user));
+        history.push("/admin/posts/home");
         return response.data;
       })
       .catch(function (error) {
         console.log(error);
+        alert("Wrong credentials");
       });
   };
 };

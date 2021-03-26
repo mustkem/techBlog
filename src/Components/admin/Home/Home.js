@@ -58,7 +58,7 @@ class Home extends React.Component {
                                 {
                                     this.state.posts && this.state.posts.map((item, index) => {
                                         return (
-                                           <PostItem item={item} key={index} />
+                                           <PostItem user={this.props.user} item={item} key={index} />
                                         )
                                     })
                                 }
@@ -77,7 +77,8 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        posts: path(["page", "posts"], state)
+        posts: path(["page", "posts"], state),
+        user: state.profileReducer.user,
     }
 }
 
