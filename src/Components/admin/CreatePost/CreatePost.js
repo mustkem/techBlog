@@ -224,7 +224,9 @@ class CreatePost extends React.Component {
         </div>
         <div style={{ textAlign: "center", marginBottom: 15 }}>
           <p>Select category</p>
+          <div style={{zIndex:10000, position:"relative"}}>
           <Select
+            
             isMulti
             value={this.state.selectedCategories}
             onChange={(selected) => {
@@ -234,6 +236,8 @@ class CreatePost extends React.Component {
             }}
             options={this.state.categories}
           />
+          </div>
+          
         </div>
 
         <div style={{ height: 700 }}>
