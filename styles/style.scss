@@ -1,0 +1,58 @@
+.post-card{
+    .link{
+        display: block;
+    padding: 10px;
+
+    }
+    margin-bottom: 40px;
+    .post-content{
+        display: flex;
+        color: #555;
+        font-size: 18px;
+        .sec-1{
+            padding-right: 12px;;
+            width:60%;
+            h2{
+                color:black;
+                font-size: 26px;;
+            }
+            .desc{
+                font-size: 18px;
+            }
+        }
+        .sec-2{
+            .figure-content{
+                height: 150px;
+            }
+            width:40%;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                border-radius: 4px;
+            }
+        }
+    }
+    .category-sec{
+        display: flex;
+        justify-content: flex-end;
+        .category{
+            font-size: 14px;
+            padding:8px;
+            margin-right:8px;
+        }
+    }
+    .link.title{
+        display: block;
+        padding: 15px;
+        border-radius: 5px;
+
+      &:hover h2{
+        color: #01299c;
+      }
+    }
+}
+
+ul{
+    padding: 0;
+}

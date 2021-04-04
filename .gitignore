@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/tutorialmedium/node_modules
 
 /.pnp
 .pnp.js
