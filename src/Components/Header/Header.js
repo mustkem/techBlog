@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { parse, stringify } from "query-string";
 import { Button } from "react-bootstrap";
@@ -79,4 +78,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(Header));
+export default connect(null, mapDispatchToProps)(Header);

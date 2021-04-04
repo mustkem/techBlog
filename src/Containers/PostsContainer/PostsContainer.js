@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 
 import PostPage from '../../Components/PostPage/PostPage';
 import * as homeActions from '../../Store/Actions/actions';
@@ -19,4 +18,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostPage));
+export default connect(mapStateToProps, mapDispatchToProps)(PostPage);

@@ -1,0 +1,110 @@
+
+.log-form {
+    &.container-size {
+      padding: 90px;
+    }
+    .inner-wrp {
+      position: relative;
+    }
+    .login-btn {
+      margin-bottom: 30px;
+      margin-left: auto;
+      padding: 8px 19px;
+    }
+    .sign-up-wrp {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    margin: 0 auto;
+  
+    max-width: 440px;
+    background: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    padding: 30px;
+  
+    @media (max-width: 40em) {
+      width: 95%;
+      position: relative;
+      margin: 2.5% auto 0 auto;
+      left: 0%;
+      -webkit-transform: translate(0%, 0%);
+      -moz-transform: translate(0%, 0%);
+      -o-transform: translate(0%, 0%);
+      -ms-transform: translate(0%, 0%);
+      transform: translate(0%, 0%);
+    }
+  
+    button {
+      margin-bottom: 15px;
+      .icon {
+        position: relative;
+        font-size: 24px;
+        margin-right: 8px;
+      }
+    }
+  
+    form {
+      display: block;
+      width: 100%;
+      padding-bottom: 5px;
+      a {
+        color: #4d148c;
+      }
+    }
+  
+    h2 {
+      // width: 100%;
+      font-size: 1.35em;
+      display: block;
+      width: 100%;
+      // text-transform: uppercase;
+      padding: 20px 0;
+      margin: 0;
+      font-weight: 400;
+      text-align: center;
+    }
+  
+    input {
+      // display: block;
+      // margin: auto auto;
+      // width: 100%;
+      // margin-bottom: 2em;
+      // padding: 0.5em 0;
+      // border: none;
+      // border-bottom: 1px solid #eaeaea;
+      // padding-bottom: 1.25em;
+      // color: #757575;
+      margin-bottom: 15px;
+      &:focus {
+        outline: none;
+      }
+    }
+  
+    .forgot {
+      line-height: 0.5em;
+      position: relative;
+      top: 2.5em;
+      text-decoration: none;
+      font-size: 0.75em;
+      margin: 0;
+      padding: 0;
+      float: right;
+  
+      &:hover {
+      }
+      &:active {
+      }
+    }
+  }
+  
+  .btn-wrp {
+    display: flex;
+    justify-content: flex-end;
+    .align-right {
+      margin-left: auto;
+    }
+  }
+  
+  .login-content {
+    padding: 100px;
+  }

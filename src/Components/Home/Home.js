@@ -3,7 +3,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { path } from "ramda";
 import { parse } from "query-string";
-import { withRouter } from "react-router-dom";
 import ContentLoader, { Facebook } from "react-content-loader";
 import { Helmet } from "react-helmet";
 
@@ -75,7 +74,7 @@ const mapStateToProps = (state) => {
     loading: path(["page", "loading"], state),
   };
 };
-export default withRouter(connect(mapStateToProps)(Home));
+export default connect(mapStateToProps)(Home);
 
 const MyLoader = () => (
   <ContentLoader viewBox="0 0 380 70">

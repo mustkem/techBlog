@@ -29,6 +29,7 @@
     "react-redux-firebase": "^2.4.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
+    "react-router-sitemap": "^1.2.0",
     "react-scripts": "3.1.1",
     "react-select": "^4.1.0",
     "react-share": "^4.3.1",
@@ -45,7 +46,8 @@
     "start:build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "push": "git push origin master"
+    "push": "git push origin master",
+    "sitemap": "babel-node src/utils/sitemap-generator.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -64,6 +66,10 @@
   },
   "devDependencies": {
     "@material-ui/core": "^4.3.3",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
     "draft-js": "^0.11.0",
     "firebase": "^8.2.9",
     "immutable": "^4.0.0-rc.12"

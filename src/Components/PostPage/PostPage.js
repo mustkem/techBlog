@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter } from "react-router";
 import axios from "axios";
 import Prism from "prismjs";
 import { Helmet } from "react-helmet";
@@ -173,7 +172,7 @@ class PostPage extends React.Component {
   }
 }
 
-export default withRouter(PostPage);
+export default PostPage;
 
 const MyLoader = () => (
   <ContentLoader viewBox="0 0 380 70">
