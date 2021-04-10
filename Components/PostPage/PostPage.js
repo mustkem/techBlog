@@ -67,6 +67,7 @@ class PostPage extends React.Component {
                   )}
 
                   {post && (
+                    <article>
                     <div className="post RichEditor-editor">
                       <h1 className="title">
                         <strong>{post.title}</strong>
@@ -103,14 +104,12 @@ class PostPage extends React.Component {
                           </WhatsappShareButton>
                         </div>
                       </div>
-                      {/* <div className="detail-image">
-                        <img src={API_URL + "/" + post.imageUrl} />
-                      </div> */}
                       <div
                         className="post-content"
                         dangerouslySetInnerHTML={{ __html: post.content }}
                       ></div>
                     </div>
+                    </article>
                   )}
                 </div>
               </div>

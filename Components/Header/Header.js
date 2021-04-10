@@ -62,6 +62,8 @@ const Header = (props) => {
             <li>
               <Button
                 className="link react"
+                style={{"backgroundColor": "#20232a",
+                  "color": "#61dafb"}}
                 onClick={() => {
                   hadlePageChange({ category: "react" });
                 }}
@@ -72,6 +74,8 @@ const Header = (props) => {
             <li>
               <Button
                 className="link javascript"
+                style={{"backgroundColor": "yellow",
+                  "color": "black"}}
                 onClick={() => {
                   hadlePageChange({ category: "javascript" });
                 }}
