@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { connect } from 'react-redux';\nimport { testAction } from '../Store/Actions/promiseBasedAction';\nimport Component from '../Components/PromiseBasedActionComponent/PromiseBasedActionComponent';\nexport default connect(null, {\n  testAction: testAction\n})(Component);","map":null,"metadata":{},"sourceType":"module"}

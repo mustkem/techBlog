@@ -1,0 +1,1 @@
+{"ast":null,"code":"// import axios from 'axios'\nexport const testAction = data => dispatch => new Promise((resolve, reject) => {\n  resolve();\n});","map":null,"metadata":{},"sourceType":"module"}

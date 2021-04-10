@@ -4,7 +4,7 @@ import Prism from "prismjs";
 import { Helmet } from "react-helmet";
 import ContentLoader, { Facebook } from "react-content-loader";
 
-import { withRouter } from 'next/router'
+import { withRouter } from "next/router";
 
 import { API_URL } from "../../config";
 
@@ -39,14 +39,17 @@ class PostPage extends React.Component {
 
   componentDidMount() {
     setTimeout(() => Prism.highlightAll(), 50);
+    if (typeof window !== undefined) {
+      window.scrollTo(0, 0);
+    }
   }
 
   render() {
     const { post } = this.props;
 
     let href = "";
-    if(typeof window !== 'undefined'){
-      href = window.location.href; 
+    if (typeof window !== "undefined") {
+      href = window.location.href;
     }
 
     return (
@@ -58,14 +61,13 @@ class PostPage extends React.Component {
               <div className="col-md-9">
                 <div className="post-wrap">
                   {this.state.loading && (
-                  <div style={{ marginTop: 20 }}>
-                    <MyLoader />
-                  </div>
+                    <div style={{ marginTop: 20 }}>
+                      <MyLoader />
+                    </div>
                   )}
 
                   {post && (
                     <div className="post RichEditor-editor">
-                     
                       <h1 className="title">
                         <strong>{post.title}</strong>
                       </h1>
@@ -78,7 +80,6 @@ class PostPage extends React.Component {
                         }}
                       >
                         <div className="share-icon-container">
-                         
                           <FacebookShareButton
                             url={href}
                             quote={post.title}

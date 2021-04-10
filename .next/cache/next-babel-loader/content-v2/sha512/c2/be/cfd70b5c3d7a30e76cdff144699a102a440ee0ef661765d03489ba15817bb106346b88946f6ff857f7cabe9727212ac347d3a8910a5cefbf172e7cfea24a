@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport React from \"react\";\n\nclass MyComp extends React.Component {\n  componentDidMount() {\n    this.props.testAction().then(() => {});\n  }\n\n  render() {\n    return /*#__PURE__*/_jsx(\"div\", {});\n  }\n\n}\n\nexport default MyComp;","map":null,"metadata":{},"sourceType":"module"}

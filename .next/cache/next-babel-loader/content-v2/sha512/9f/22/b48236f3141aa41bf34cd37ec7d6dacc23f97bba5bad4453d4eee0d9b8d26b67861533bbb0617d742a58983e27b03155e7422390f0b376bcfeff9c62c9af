@@ -1,0 +1,1 @@
+{"ast":null,"code":"import PostPage from './PostPage';\nexport default PostPage;","map":null,"metadata":{},"sourceType":"module"}

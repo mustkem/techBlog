@@ -1,0 +1,1 @@
+{"ast":null,"code":"import PostItem from './PostItem';\nexport default PostItem;","map":null,"metadata":{},"sourceType":"module"}

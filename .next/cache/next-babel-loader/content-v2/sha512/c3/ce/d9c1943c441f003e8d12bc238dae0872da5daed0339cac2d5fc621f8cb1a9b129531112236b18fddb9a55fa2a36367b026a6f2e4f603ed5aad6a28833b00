@@ -1,0 +1,1 @@
+{"ast":null,"code":"// import axios from 'axios'\nexport var testAction = function testAction(data) {\n  return function (dispatch) {\n    return new Promise(function (resolve, reject) {\n      resolve();\n    });\n  };\n};","map":null,"metadata":{},"sourceType":"module"}
