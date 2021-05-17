@@ -37,7 +37,7 @@ class Home extends React.Component {
                                 {
                                     this.props.posts && this.props.posts.map((item, index) => {
                                         return (
-                                           <PostItem item={item} key={index} />
+                                           <PostItem item={item} key={index} index={index} />
                                         )
                                     })
                                 }
