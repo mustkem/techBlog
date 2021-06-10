@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { withRouter } from "next/router";
+
 
 import axios from "axios";
 import { connect } from "react-redux";
@@ -20,8 +14,6 @@ import PostDetail from "./PostDetail/PostDetail";
 import CreatePost from "./CreatePost";
 
 function Admin(props) {
-  let { path, url } = useRouteMatch();
-  const history = useHistory();
 
   const [isValid, setIsValid] = React.useState(true);
 
@@ -69,12 +61,10 @@ function Admin(props) {
   );
 }
 
-//
-
 const mapDispatchToProps = (dispatch) => {
   return {
     loginAction: (payload) => dispatch(loginAction(payload)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(Admin);
+export default withRouter(connect(null, mapDispatchToProps)(Admin));

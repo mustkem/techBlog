@@ -6,8 +6,6 @@ import { connect } from "react-redux";
 
 import { login } from "../../../Store/Actions/actions";
 
-import "./style/index.scss";
-
 function Login(props) {
   const [formDataLogin, setFormData] = useState({ email: "", password: "" });
   const history = useHistory();

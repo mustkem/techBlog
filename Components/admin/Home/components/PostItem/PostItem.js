@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-import "./style/index.scss";
-
 function PostItem(props) {
   const { item } = props;
   return (
