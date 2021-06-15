@@ -1,0 +1,1 @@
+{"ast":null,"code":"import CreatePost from './CreatePost';\nexport default CreatePost;","map":null,"metadata":{},"sourceType":"module"}

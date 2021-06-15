@@ -1,0 +1,1 @@
+{"ast":null,"code":"import Admin from './Admin';\nexport default Admin;","map":null,"metadata":{},"sourceType":"module"}
