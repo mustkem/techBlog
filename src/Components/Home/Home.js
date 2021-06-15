@@ -26,12 +26,12 @@ class Home extends React.Component {
     render() {
         return (
             <Layout >
-            <div className="home">
-            <AdvertBannerTop />
+            <div className="home" style={{marginTop:20}}>
+            {/* <AdvertBannerTop /> */}
                 <div className="container">
                     
-                    <div className="row" >
-                        <div className="col" >
+                    <div className="" style={{width:800, margin:"0 auto"}} >
+                        <div className="" >
 
                             <ul className="posts post-list">
                                 {
@@ -45,7 +45,7 @@ class Home extends React.Component {
                             </ul>
                         </div>
                         <div className="side-banner" xs={0} sm={4}>
-                            <SideBanner />
+                            {/* <SideBanner /> */}
                         </div>
                     </div>
                 </div>

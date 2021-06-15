@@ -62,10 +62,8 @@ class PostPage extends React.Component {
     return (
       <Layout>
         <div className="post-page">
-        <AdvertBannerTop />
-          <div className="container">
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={8}>
+          <div className="container">4
+          <div style={{width:800, margin:"0 auto"}}>
                 <div className="bttn-wrap">
                                 <button onClick={this.onEditClick}>
                                     {
@@ -140,11 +138,7 @@ class PostPage extends React.Component {
                     />
                   </div>
                 )}
-              </Grid>
-              <Grid className="side-banner" item xs={0} sm={4}>
-                <SideBanner />
-              </Grid>
-            </Grid>
+          </div>
           </div>
         </div>
       </Layout>
