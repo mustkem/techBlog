@@ -66,7 +66,7 @@ class PostPage extends React.Component {
           <div className="container">
             <Grid container spacing={3}>
               <Grid item xs={12} sm={8}>
-                {/* <div className="bttn-wrap">
+                <div className="bttn-wrap">
                                 <button onClick={this.onEditClick}>
                                     {
                                         !this.state.editPost &&
@@ -77,7 +77,7 @@ class PostPage extends React.Component {
                                         'View Post'
                                     }
                                 </button>
-                            </div> */}
+                            </div>
 
                 {!this.state.editPost && (
                   <div className="post-wrap">
