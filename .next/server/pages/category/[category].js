@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -235,6 +235,14 @@ module.exports = _interopRequireWildcard;
 
 /***/ }),
 
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("uyrM");
+
+
+/***/ }),
+
 /***/ "3WeD":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -319,14 +327,6 @@ function normalizeLocalePath(pathname, locales) {
     detectedLocale
   };
 }
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("uyrM");
-
 
 /***/ }),
 
@@ -3109,7 +3109,7 @@ const Header = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getPosts: payload => dispatch(actions["c" /* getPosts2 */](payload))
+    getPosts: payload => dispatch(actions["b" /* getPosts2 */](payload))
   };
 };
 
@@ -3216,14 +3216,14 @@ const API_URL = "https://codemedium-backend.herokuapp.com"; // export const API_
 
 "use strict";
 /* unused harmony export addPost */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getAdminPosts; });
+/* unused harmony export getAdminPosts */
 /* unused harmony export testActionCreator */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getPosts2; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getPost2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getPosts2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getPost2; });
 /* unused harmony export onGetPosts */
 /* unused harmony export onGetPost */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return login; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return loginAction; });
+/* unused harmony export login */
+/* unused harmony export loginAction */
 /* harmony import */ var _ActionsTypes_actionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("v09L");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("zr5I");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
@@ -3413,7 +3413,7 @@ const getStaticProps = _Store_store__WEBPACK_IMPORTED_MODULE_4__[/* wrapper */ "
   store
 }) => {
   console.log("test--------------", params);
-  await store.dispatch(_Store_Actions_actions__WEBPACK_IMPORTED_MODULE_5__[/* getPosts2 */ "c"]({
+  await store.dispatch(_Store_Actions_actions__WEBPACK_IMPORTED_MODULE_5__[/* getPosts2 */ "b"]({
     category: params.category
   }));
   return {
