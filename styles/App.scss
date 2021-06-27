@@ -28,15 +28,25 @@ a {
   
   
 .footer {
-  background: #1a1919ef;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  background: aliceblue;
 }
+
+  
+.footer-content {
+  font-size: 15px;
+  padding: 50px 0; 
+  .item{
+    padding:15px;
+  }
+}
+
 
 /* starts */
 
 .header{
-  background-color: #f9f9f9;
-  box-shadow: 0px 0px 19px -7px #b5b5b5;
-
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  margin-bottom: 50px;
 
 .navbar-main {
   display: flex;
@@ -74,7 +84,7 @@ a {
 }
 
 .header-content {
-  padding: 18px 0;
+  padding: 50px 0;
 
   .logo-wrp{
     .logo-sec{
@@ -213,7 +223,6 @@ pre{
   line-height: 1.3;
   font-size: 35px;
   padding-bottom: 20px;
-  text-align: center;
 }
 
 .post .post-content{

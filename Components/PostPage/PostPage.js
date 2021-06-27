@@ -55,17 +55,8 @@ class PostPage extends React.Component {
     return (
       <Layout>
         <div className="post-page">
-          <AdvertBannerTop />
           <div className="container">
-            <div className="row">
-              <div className="col-md-9">
-                <div className="post-wrap">
-                  {this.state.loading && (
-                    <div style={{ marginTop: 20 }}>
-                      <MyLoader />
-                    </div>
-                  )}
-
+                <div className="post-sec">
                   {post && (
                     <article>
                     <div className="post RichEditor-editor">
@@ -113,11 +104,6 @@ class PostPage extends React.Component {
                   )}
                 </div>
               </div>
-              <div className="side-banner col-md-3">
-                <SideBanner />
-              </div>
-            </div>
-          </div>
         </div>
       </Layout>
     );

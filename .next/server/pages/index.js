@@ -347,7 +347,7 @@ module.exports = __webpack_require__("RNiq");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-/* harmony default export */ __webpack_exports__["a"] = (() => {
+/* unused harmony default export */ var _unused_webpack_default_export = (() => {
   return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
     children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
       className: "advertisement",
@@ -839,7 +839,7 @@ module.exports = require("next/dist/next-server/lib/router-context.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-/* harmony default export */ __webpack_exports__["a"] = (() => {
+/* unused harmony default export */ var _unused_webpack_default_export = (() => {
   return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
     className: "banner-adv",
     children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
@@ -966,7 +966,7 @@ function PostItem(props) {
 // CONCATENATED MODULE: ./Components/Home/components/PostItem/index.js
 
 /* harmony default export */ var components_PostItem = (PostItem_PostItem);
-// EXTERNAL MODULE: ./Components/Layout/Layout.js + 5 modules
+// EXTERNAL MODULE: ./Components/Layout/Layout.js + 2 modules
 var Layout = __webpack_require__("oD5A");
 
 // EXTERNAL MODULE: ./Components/sharedComponents/Advert/AdvertBannerTop.js
@@ -991,28 +991,19 @@ class Home_Home extends external_react_default.a.Component {
 
   render() {
     return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Layout["a" /* default */], {
-      children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
         className: "home",
-        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(AdvertBannerTop["a" /* default */], {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
           className: "container",
-          children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-            className: "row",
-            children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-              className: "col-md-8 col-sm-12",
-              children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("ul", {
-                className: "posts post-list",
-                children: this.props.posts && this.props.posts.map((item, index) => {
-                  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(components_PostItem, {
-                    item: item
-                  }, item._id);
-                })
-              })
-            }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-              className: "side-banner col-md-4 col-sm-0",
-              children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(SideBanner["a" /* default */], {})
-            })]
+          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("ul", {
+            className: "posts post-list",
+            children: this.props.posts && this.props.posts.map((item, index) => {
+              return /*#__PURE__*/Object(jsx_runtime_["jsx"])(components_PostItem, {
+                item: item
+              }, item._id);
+            })
           })
-        })]
+        })
       })
     });
   }
@@ -3061,7 +3052,6 @@ var jsx_runtime_ = __webpack_require__("F5FC");
 
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__("cDcd");
-var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
 
 // EXTERNAL MODULE: external "next/router"
 var router_ = __webpack_require__("4Q3z");
@@ -3192,66 +3182,26 @@ const mapDispatchToProps = dispatch => {
 };
 
 /* harmony default export */ var Header_Header = (Object(external_react_redux_["connect"])(null, mapDispatchToProps)(Header));
-// CONCATENATED MODULE: ./Store/Actions/promiseBasedAction.js
-// import axios from 'axios'
-const testAction = data => dispatch => new Promise((resolve, reject) => {
-  resolve();
-});
-// CONCATENATED MODULE: ./Components/PromiseBasedActionComponent/PromiseBasedActionComponent.js
-
-
-
-class PromiseBasedActionComponent_MyComp extends external_react_default.a.Component {
-  componentDidMount() {
-    this.props.testAction().then(() => {});
-  }
-
-  render() {
-    return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {});
-  }
-
-}
-
-/* harmony default export */ var PromiseBasedActionComponent = (PromiseBasedActionComponent_MyComp);
-// CONCATENATED MODULE: ./Containers/promiseBasedActionContianer.js
-
-
-
-/* harmony default export */ var promiseBasedActionContianer = (Object(external_react_redux_["connect"])(null, {
-  testAction: testAction
-})(PromiseBasedActionComponent));
 // CONCATENATED MODULE: ./Components/Footer/Footer.js
 
 
 
-
 /* harmony default export */ var Footer = (props => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-    style: {
-      background: "aliceblue",
-      fontSize: 12,
-      padding: "15px 0"
-    },
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
     className: "footer",
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+    children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
       className: "container",
       children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-        className: "header-content",
-        style: {
-          display: "flex"
-        },
+        className: "footer-content",
         children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-          className: "logo-wrp",
+          className: "item",
           children: "Copyright @ Tutorial Medium"
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-          className: "logo-wrp",
-          style: {
-            marginLeft: 15
-          },
+          className: "item",
           children: "Contact us on contact@tutorialmedium.com"
         })]
       })
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(promiseBasedActionContianer, {})]
+    })
   });
 });
 // CONCATENATED MODULE: ./Components/Layout/Layout.js

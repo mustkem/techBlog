@@ -21,32 +21,16 @@ class Home extends React.Component {
     return (
       <Layout>
         <div className="home">
-          <AdvertBannerTop />
           <div className="container">
-            <div className="row">
-              <div className="col-md-8 col-sm-12"  >
+            
                 <ul className="posts post-list">
-                  {/* {this.props.loading &&
-                    [1, 1].map((item) => {
-                      return (
-                        <li className="post-card">
-                          <div style={{ padding: 15 }}>
-                            <MyLoader />
-                          </div>
-                        </li>
-                      );
-                    })} */}
                   {
                     this.props.posts &&
                     this.props.posts.map((item, index) => {
                       return <PostItem item={item} key={item._id} />;
                     })}
                 </ul>
-              </div>
-              <div className="side-banner col-md-4 col-sm-0" >
-                <SideBanner />
-              </div>
-            </div>
+              
           </div>
         </div>
       </Layout>

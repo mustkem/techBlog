@@ -125,7 +125,7 @@ module.exports = __webpack_require__("U1TB");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-/* harmony default export */ __webpack_exports__["a"] = (() => {
+/* unused harmony default export */ var _unused_webpack_default_export = (() => {
   return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
     children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
       className: "advertisement",
@@ -200,7 +200,7 @@ module.exports = require("prismjs");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-/* harmony default export */ __webpack_exports__["a"] = (() => {
+/* unused harmony default export */ var _unused_webpack_default_export = (() => {
   return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
     className: "banner-adv",
     children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
@@ -280,7 +280,7 @@ var SideBanner = __webpack_require__("62z5");
 // EXTERNAL MODULE: ./Components/sharedComponents/Advert/AdvertBannerTop.js
 var AdvertBannerTop = __webpack_require__("P+y7");
 
-// EXTERNAL MODULE: ./Components/Layout/Layout.js + 5 modules
+// EXTERNAL MODULE: ./Components/Layout/Layout.js + 2 modules
 var Layout = __webpack_require__("oD5A");
 
 // CONCATENATED MODULE: ./Components/PostPage/PostPage.js
@@ -324,78 +324,64 @@ class PostPage_PostPage extends external_react_default.a.Component {
     if (false) {}
 
     return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Layout["a" /* default */], {
-      children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
         className: "post-page",
-        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(AdvertBannerTop["a" /* default */], {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
           className: "container",
-          children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-            className: "row",
-            children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-              className: "col-md-9",
+          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+            className: "post-sec",
+            children: post && /*#__PURE__*/Object(jsx_runtime_["jsx"])("article", {
               children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-                className: "post-wrap",
-                children: [this.state.loading && /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+                className: "post RichEditor-editor",
+                children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("h1", {
+                  className: "title",
+                  children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("strong", {
+                    children: post.title
+                  })
+                }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
                   style: {
-                    marginTop: 20
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    marginBottom: 20
                   },
-                  children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(MyLoader, {})
-                }), post && /*#__PURE__*/Object(jsx_runtime_["jsx"])("article", {
                   children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-                    className: "post RichEditor-editor",
-                    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("h1", {
-                      className: "title",
-                      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("strong", {
-                        children: post.title
+                    className: "share-icon-container",
+                    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["FacebookShareButton"], {
+                      url: href,
+                      quote: post.title,
+                      hashtag: "#camperstribe",
+                      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["FacebookIcon"], {
+                        size: 36,
+                        round: true
                       })
-                    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-                      style: {
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        marginBottom: 20
-                      },
-                      children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-                        className: "share-icon-container",
-                        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["FacebookShareButton"], {
-                          url: href,
-                          quote: post.title,
-                          hashtag: "#camperstribe",
-                          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["FacebookIcon"], {
-                            size: 36,
-                            round: true
-                          })
-                        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["TwitterShareButton"], {
-                          url: href,
-                          title: post.title,
-                          hashtag: "#camperstribe",
-                          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["TwitterIcon"], {
-                            size: 36,
-                            round: true
-                          })
-                        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["WhatsappShareButton"], {
-                          url: href,
-                          title: post.title,
-                          separator: ":: ",
-                          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["WhatsappIcon"], {
-                            size: 36,
-                            round: true
-                          })
-                        })]
+                    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["TwitterShareButton"], {
+                      url: href,
+                      title: post.title,
+                      hashtag: "#camperstribe",
+                      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["TwitterIcon"], {
+                        size: 36,
+                        round: true
                       })
-                    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-                      className: "post-content",
-                      dangerouslySetInnerHTML: {
-                        __html: post.content
-                      }
+                    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["WhatsappShareButton"], {
+                      url: href,
+                      title: post.title,
+                      separator: ":: ",
+                      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_share_["WhatsappIcon"], {
+                        size: 36,
+                        round: true
+                      })
                     })]
                   })
+                }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+                  className: "post-content",
+                  dangerouslySetInnerHTML: {
+                    __html: post.content
+                  }
                 })]
               })
-            }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-              className: "side-banner col-md-3",
-              children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(SideBanner["a" /* default */], {})
-            })]
+            })
           })
-        })]
+        })
       })
     });
   }
@@ -541,7 +527,6 @@ var jsx_runtime_ = __webpack_require__("F5FC");
 
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__("cDcd");
-var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
 
 // EXTERNAL MODULE: external "next/router"
 var router_ = __webpack_require__("4Q3z");
@@ -672,66 +657,26 @@ const mapDispatchToProps = dispatch => {
 };
 
 /* harmony default export */ var Header_Header = (Object(external_react_redux_["connect"])(null, mapDispatchToProps)(Header));
-// CONCATENATED MODULE: ./Store/Actions/promiseBasedAction.js
-// import axios from 'axios'
-const testAction = data => dispatch => new Promise((resolve, reject) => {
-  resolve();
-});
-// CONCATENATED MODULE: ./Components/PromiseBasedActionComponent/PromiseBasedActionComponent.js
-
-
-
-class PromiseBasedActionComponent_MyComp extends external_react_default.a.Component {
-  componentDidMount() {
-    this.props.testAction().then(() => {});
-  }
-
-  render() {
-    return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {});
-  }
-
-}
-
-/* harmony default export */ var PromiseBasedActionComponent = (PromiseBasedActionComponent_MyComp);
-// CONCATENATED MODULE: ./Containers/promiseBasedActionContianer.js
-
-
-
-/* harmony default export */ var promiseBasedActionContianer = (Object(external_react_redux_["connect"])(null, {
-  testAction: testAction
-})(PromiseBasedActionComponent));
 // CONCATENATED MODULE: ./Components/Footer/Footer.js
 
 
 
-
 /* harmony default export */ var Footer = (props => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-    style: {
-      background: "aliceblue",
-      fontSize: 12,
-      padding: "15px 0"
-    },
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
     className: "footer",
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+    children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
       className: "container",
       children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-        className: "header-content",
-        style: {
-          display: "flex"
-        },
+        className: "footer-content",
         children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-          className: "logo-wrp",
+          className: "item",
           children: "Copyright @ Tutorial Medium"
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-          className: "logo-wrp",
-          style: {
-            marginLeft: 15
-          },
+          className: "item",
           children: "Contact us on contact@tutorialmedium.com"
         })]
       })
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(promiseBasedActionContianer, {})]
+    })
   });
 });
 // CONCATENATED MODULE: ./Components/Layout/Layout.js
