@@ -16,22 +16,17 @@ class Home extends React.Component {
     super(props);
     this.state = {};
   }
- 
+
   render() {
     return (
       <Layout>
         <div className="home">
-          <div className="container">
-            
-                <ul className="posts post-list">
-                  {
-                    this.props.posts &&
-                    this.props.posts.map((item, index) => {
-                      return <PostItem item={item} key={item._id} />;
-                    })}
-                </ul>
-              
-          </div>
+          <ul className="posts post-list">
+            {this.props.posts &&
+              this.props.posts.map((item, index) => {
+                return <PostItem item={item} key={item._id} />;
+              })}
+          </ul>
         </div>
       </Layout>
     );

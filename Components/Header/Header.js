@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 import { connect } from "react-redux";
 import { parse, stringify } from "query-string";
@@ -8,17 +8,16 @@ import { Button } from "react-bootstrap";
 import * as homeActions from "../../Store/Actions/actions";
 
 const Header = (props) => {
-
-  const router = useRouter()
+  const router = useRouter();
 
   const hadlePageChange = (payload) => {
     const query = {};
     query.category = payload.category;
-    const newQuery ={};
+    const newQuery = {};
 
-    Object.keys(query).forEach(key=>{
-      if(query[key]){
-        newQuery[key] = query[key]; 
+    Object.keys(query).forEach((key) => {
+      if (query[key]) {
+        newQuery[key] = query[key];
       }
     });
 
@@ -37,51 +36,36 @@ const Header = (props) => {
                 router.push("/");
                 props.getPosts({});
               }}
-              style={{display:"flex", background:"transparent"}}
+              style={{ display: "flex", background: "transparent" }}
             >
-               <span
-                style={{
-                  background: "blue",
-                  color: "#fff",
-                  width: 25,
-                  height: 25,
-                  lineHeight: 25,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  fontWeight:"bold"
-                }}
-                
-              >T</span>
-              <span className="sub-title" style={{ position: "relative", top: 1, marginLeft: 8 }}>
-              Tutorial Medium
+              <span
+                className="sub-title"
+                style={{ position: "relative", top: 1, marginLeft: 8 }}
+              >
+                Tutorial Medium
               </span>
             </div>
           </div>
           <ul className="navbar-main">
             <li>
-              <Button
+              <div
                 className="link react"
-                style={{"backgroundColor": "#20232a",
-                  "color": "#61dafb"}}
                 onClick={() => {
                   hadlePageChange({ category: "react" });
                 }}
               >
                 React
-              </Button>
+              </div>
             </li>
             <li>
-              <Button
+              <div
                 className="link javascript"
-                style={{"backgroundColor": "yellow",
-                  "color": "black"}}
                 onClick={() => {
                   hadlePageChange({ category: "javascript" });
                 }}
               >
                 Javascript
-              </Button>
+              </div>
             </li>
           </ul>
         </div>

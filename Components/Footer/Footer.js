@@ -11,14 +11,6 @@ export default (props) => {
           <div className="item" >
             Contact us on contact@tutorialmedium.com
           </div>
-          {/* <ul className="navbar-main">
-          <li>
-            <a className="react" href="/">React</a>
-          </li>
-          <li>
-            <a className="javascript" href="/">Javascript</a>
-          </li>
-        </ul> */}
         </div>
       </div>
     </div>

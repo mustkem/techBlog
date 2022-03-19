@@ -5,7 +5,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 1500px;
 }
+
+
 
 .main {
   padding: 5rem 0;
@@ -36,7 +39,7 @@
 }
 
 .title a {
-  color: #0070f3;
+  color: #d44a2c;
   text-decoration: none;
 }
 
