@@ -83,3 +83,5 @@ firebase init
 3
 Deploy to Firebase Hosting
 firebase deploy
+
+4 test
